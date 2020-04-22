@@ -1,0 +1,57 @@
+{
+  "name": "electron",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/main.js",
+  "homepage": "./",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
+    "electron-prod": "electron .",
+    "lint": "eslint src/ --fix --ext [.tsx,.ts,.js] --max-warnings 0",
+    "lintnf": "./node_modules/.bin/eslint src/ --ext [.tsx,.ts,.js] --max-warnings 0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "electron": "^8.2.3",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.5",
+    "jest": "^25.4.0",
+    "react-scripts": "3.4.1",
+    "typescript": "~3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  }
+}
