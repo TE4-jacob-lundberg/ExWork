@@ -1,27 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import Styled from '@emotion/styled';
+
+import AppRouter from './AppRouter';
 import './App.css';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function App() {
+interface Props {}
+
+const App: React.FC<Props> = function () {
+  const AppContainerStyled = Styled.div`
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgba(0,0,0,0.1);
+  `;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainerStyled>
+      <AppRouter />
+    </AppContainerStyled>
   );
-}
+};
 
 export default App;

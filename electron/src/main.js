@@ -1,18 +1,28 @@
 /* eslint-disable */
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen, globalShortcut } = require('electron');
 const url = require('url');
 
 const path = require('path');
 
+let mainWindow = null;
+
 function createWindow () {
+  const { height, width } = screen.getPrimaryDisplay().size;
+
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+  mainWindow = new BrowserWindow({
+    width,
+    height,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     },
+    frame: false,
+    transparent: true,
+    movable: false,
+    skipTaskbar: true,
+    show: false,
+    alwaysOnTop: true,
   });
 
   // and load the index.html of the app.
@@ -23,8 +33,10 @@ function createWindow () {
     slashes: true,
   }));
 
+  mainWindow.removeMenu();
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
@@ -47,3 +59,13 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+app.on('ready', () => {
+  globalShortcut.register('F10', () => {
+    if (mainWindow.isVisible()) mainWindow.hide();
+    else mainWindow.show();
+  });
+  globalShortcut.register('F12', () => {
+    mainWindow.webContents.openDevTools()
+  });
+});
