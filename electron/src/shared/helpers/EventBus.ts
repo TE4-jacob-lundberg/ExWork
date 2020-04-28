@@ -1,4 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+interface IEventBus {
+  events: {[id: string]: Function[]};
+  dispatch: (event: string, data: any) => void;
+  subscribe: (event: string, callBack: Function) => void;
+}
+
 const EventBus: IEventBus = {
   events: {},
   dispatch: function (event: string, data: any): void {
@@ -10,11 +16,5 @@ const EventBus: IEventBus = {
     this.events[event].push(callBack);
   },
 };
-
-interface IEventBus {
-  events: {[id: string]: Function[]};
-  dispatch: (event: string, data: any) => void;
-  subscribe: (event: string, callBack: Function) => void;
-}
 
 export { EventBus };

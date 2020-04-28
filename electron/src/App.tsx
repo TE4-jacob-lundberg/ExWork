@@ -13,6 +13,9 @@ const App: React.FC<Props> = function () {
     margin: 0;
     padding: 0;
     background: rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `;
 
   return (

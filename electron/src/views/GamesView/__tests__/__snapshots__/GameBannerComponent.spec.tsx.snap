@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameBannerComponent.tsx renders correctly 1`] = `
+<div
+  className="css-1mnon1z"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <img
+    className="css-1qu595p"
+    src="csgo.jpg"
+  />
+</div>
+`;

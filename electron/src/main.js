@@ -21,8 +21,9 @@ function createWindow () {
     transparent: true,
     movable: false,
     skipTaskbar: true,
-    show: false,
     alwaysOnTop: true,
+    backgroundColor: '#00000000',
+    show: false,
   });
 
   // and load the index.html of the app.

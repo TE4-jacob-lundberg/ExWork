@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GamesView.tsx renders correctly 1`] = `
+<div
+  className="css-cysm3d"
+>
+  <div
+    className="css-1mnon1z"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <img
+      className="css-1qu595p"
+      src="csgo.jpg"
+    />
+  </div>
+  <div
+    className="css-1mnon1z"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <img
+      className="css-1qu595p"
+      src="valorant.jpg"
+    />
+  </div>
+  <div
+    className="css-1mnon1z"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <img
+      className="css-1qu595p"
+      src="cod_mw.jpg"
+    />
+  </div>
+</div>
+`;

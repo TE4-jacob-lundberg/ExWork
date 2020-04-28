@@ -9,8 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Run all unit tests
+    - name: Run all electron unit tests
       run: |
-        echo Run test
-        # npm install
-        # npm run test
+        cd electron
+        npm install
+        npm run test
