@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkCollectionComponent.tsx renders correctly 1`] = `
+<div>
+  <div
+    class="css-cjmacl"
+  >
+    <div
+      class="css-ofaokk"
+    >
+      <button
+        class="css-1s7qnvw"
+      >
+        link1
+      </button>
+    </div>
+    <div
+      class="css-r4meof"
+    >
+      <button
+        class="css-1s7qnvw"
+      >
+        link2
+      </button>
+    </div>
+  </div>
+</div>
+`;

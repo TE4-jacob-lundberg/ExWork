@@ -1,16 +1,13 @@
 import React from 'react';
-import { RenderResult } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+
+import { routerFactory } from '../../../shared/helpers/TestFactory';
 import GamesView from '../GamesView';
 
-function factory(): RenderResult {
-  return renderer.create(<GamesView />);
-}
 
 describe('GamesView.tsx', () => {
   it('renders correctly', () => {
-    const container = factory();
-    
+    const { container } = routerFactory(<GamesView />);
+     
     expect(container).toMatchSnapshot();
   });
 });

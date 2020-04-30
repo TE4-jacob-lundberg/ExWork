@@ -1,3 +1,4 @@
 export const routes = {
-  home: '/',
+  games: '/',
+  gameLinks: '/:gameID',
 };

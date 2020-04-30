@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Styled from '@emotion/styled';
 
 import { IGame } from '../../../shared/constants/standardGames';
@@ -8,11 +9,9 @@ interface Props {
 }
 
 const GameBannerComponent: React.FC<Props> = function (props: Props) {
-  const [grayScale, setGrayScale] = useState('50');
+  const history = useHistory();
 
-  function handleClick(): void {
-    // Implement click functionality
-  }
+  const [grayScale, setGrayScale] = useState('50');
 
   function handleMouseEnter(): void {
     setGrayScale('0');
@@ -24,23 +23,20 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
 
   const ContainerStyled = Styled.div`
     height: 100%;
-    position: relative;
-    overflow: hidden;
     display: flex;
     justify-content: center;
-  `;
-
-  const BackgroundStyled = Styled.img`
-    position: absolute;
+    background: url(${require(`../../../shared/assets/images/${props.game.image.name}`)}) ${props.game.image.bannerPos.x || '0'} ${props.game.image.bannerPos.y || '0'} no-repeat;
+    background-size: cover;
     filter: grayscale(${grayScale}%);
-    height: 100%;
-    z-index: -1;
   `;
 
   return (
-    <ContainerStyled onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} >
-      <BackgroundStyled src={require(`../../../shared/assets/images/${props.game.image.name}`)} />
-    </ContainerStyled>
+    <ContainerStyled 
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave} 
+      onClick={(): void => history.push(`/${props.game.id}`)}
+      data-testid="banner"
+    />
   );
 };
 
