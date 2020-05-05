@@ -1,8 +1,11 @@
+import { ILink } from '../helpers/Types';
+
 export interface IGame {
   id: string;
   title: string;
   abbreviation: string | null;
   image: IGameImage;
+  links: ILink[];
 }
 
 export interface IGameImage {
@@ -32,6 +35,12 @@ export const standardGames: IGame[] = [
         y: '0',
       },
     },
+    links: [
+      { label: 'Wiki', url: 'https://counterstrike.fandom.com/wiki/Counter-Strike:_Global_Offensive'},
+      { label: 'CS:GO Stash', url: 'http://csgostash.com'},
+      { label: 'Steam Guide SprayPatterns', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=378325692'},
+      { label: 'Steam Market', url: 'https://steamcommunity.com/market/search?l=swedish&appid=730'},
+    ],
   },
   {
     id: 'valorant',
@@ -48,6 +57,9 @@ export const standardGames: IGame[] = [
         y: '0',
       },
     },
+    links: [
+      { label: 'Wiki', url: 'https://valorant.fandom.com/wiki/Valorant_Wiki'},
+    ],
   },
   {
     id: 'codmw',
@@ -64,6 +76,9 @@ export const standardGames: IGame[] = [
         y: '0',
       },
     },
+    links: [
+      { label: 'Wiki', url: 'https://callofduty.fandom.com/wiki/Portal:Call_of_Duty:_Modern_Warfare_(2019)'},
+    ],
   },
   // {
   //   title: 'League of Legends',

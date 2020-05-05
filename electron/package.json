@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "ENVIRONMENT='test' react-scripts test",
     "eject": "react-scripts eject",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "lint": "eslint src/ --fix --ext [.tsx,.ts,.js] --max-warnings 0",

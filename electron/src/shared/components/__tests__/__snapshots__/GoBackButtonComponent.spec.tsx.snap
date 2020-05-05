@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoBackButtonComponent.tsx doesn't show on root route 1`] = `
+<div>
+  <div
+    class="css-1lkolb"
+  >
+    Go back
+    <i
+      class="material-icons css-oqb07f-GoBackButtonComponent"
+    >
+      keyboard_backspace
+    </i>
+  </div>
+</div>
+`;
+
+exports[`GoBackButtonComponent.tsx doesn't show on root route 2`] = `
+<div>
+  <span />
+</div>
+`;
+
+exports[`GoBackButtonComponent.tsx renders correctly 1`] = `
+<div>
+  <div
+    class="css-1lkolb"
+  >
+    Go back
+    <i
+      class="material-icons css-oqb07f-GoBackButtonComponent"
+    >
+      keyboard_backspace
+    </i>
+  </div>
+</div>
+`;

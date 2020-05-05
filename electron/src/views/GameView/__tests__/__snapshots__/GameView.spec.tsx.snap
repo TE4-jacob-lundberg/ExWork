@@ -17,7 +17,7 @@ exports[`GameView.tsx renders correctly 1`] = `
         <button
           class="css-1qbtfbw"
         >
-          Google [Working as intended]
+          Wiki
         </button>
       </div>
       <div
@@ -26,7 +26,7 @@ exports[`GameView.tsx renders correctly 1`] = `
         <button
           class="css-1qbtfbw"
         >
-          Google
+          CS:GO Stash
         </button>
       </div>
       <div
@@ -35,7 +35,7 @@ exports[`GameView.tsx renders correctly 1`] = `
         <button
           class="css-1qbtfbw"
         >
-          Google
+          Steam Guide SprayPatterns
         </button>
       </div>
       <div
@@ -44,61 +44,7 @@ exports[`GameView.tsx renders correctly 1`] = `
         <button
           class="css-1qbtfbw"
         >
-          Google
-        </button>
-      </div>
-      <div
-        class="css-nijhdc"
-      >
-        <button
-          class="css-1qbtfbw"
-        >
-          Google
-        </button>
-      </div>
-      <div
-        class="css-1svfgn6"
-      >
-        <button
-          class="css-1qbtfbw"
-        >
-          Google
-        </button>
-      </div>
-      <div
-        class="css-nijhdc"
-      >
-        <button
-          class="css-1qbtfbw"
-        >
-          Google
-        </button>
-      </div>
-      <div
-        class="css-1svfgn6"
-      >
-        <button
-          class="css-1qbtfbw"
-        >
-          Google
-        </button>
-      </div>
-      <div
-        class="css-nijhdc"
-      >
-        <button
-          class="css-1qbtfbw"
-        >
-          Google
-        </button>
-      </div>
-      <div
-        class="css-1svfgn6"
-      >
-        <button
-          class="css-1qbtfbw"
-        >
-          Google
+          Steam Market
         </button>
       </div>
     </div>

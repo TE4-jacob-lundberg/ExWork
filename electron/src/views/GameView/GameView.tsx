@@ -29,7 +29,7 @@ const GameView: React.FC<Props> = function () {
         game={gameData}
       />
       <LinkCollectionComponent 
-        links={[{label: 'Google [Working as intended]', url: 'http://www.google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }, {label: 'Google', url: 'google.com' }]}
+        links={gameData.links}
       />
     </ContainerStyled>
   );

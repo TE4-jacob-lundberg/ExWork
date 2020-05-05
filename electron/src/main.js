@@ -16,7 +16,6 @@ function createWindow () {
     width,
     height,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
     },
     frame: false,
@@ -64,15 +63,8 @@ app.on('activate', function () {
 app.on('ready', () => {
   globalShortcut.register('F10', () => {
     windows = BrowserWindow.getAllWindows();
-    if (mainWindow.isVisible()) {
-      windows.forEach(win => {
-        win.hide();
-      });
-    } else {
-      windows.forEach(win => {
-        win.show();
-      });
-    }
+    if (mainWindow.isVisible()) windows.forEach(win => win.hide());
+    else windows.forEach(win => win.show());
   });
   globalShortcut.register('F12', () => {
     mainWindow.webContents.openDevTools()
