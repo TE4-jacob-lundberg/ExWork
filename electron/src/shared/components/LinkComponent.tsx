@@ -2,6 +2,9 @@ import React from 'react';
 import Styled from '@emotion/styled';
 
 import { ILink } from '../helpers/Types';
+import { electron } from '../helpers/BrowserElectron';
+
+const ipcRenderer = electron.ipcRenderer;
 
 interface Props {
   link: ILink
@@ -9,10 +12,15 @@ interface Props {
 }
 
 const LinkComponent: React.FC<Props> = function (props: Props) {
+  function handleClick(): void {
+    ipcRenderer.invoke('open-link', props.link.url)
+      // eslint-disable-next-line no-console
+      .catch((err: ErrorEvent) => console.error(err));
+  }
+
   const ContainerStyled = Styled.div`
-    height: 100%;
+    height: 50px;
     width: 100%;
-    padding: 16px 0;
     background: ${props.background};
 
     &:hover { 
@@ -24,12 +32,17 @@ const LinkComponent: React.FC<Props> = function (props: Props) {
     background: none;
     border: none;
     width: 100%;
+    color: #FFF;
     height: 100%;
+
+    &:hover {
+      color: #000;
+    }
   `;
   
   return (
     <ContainerStyled>
-      <ButtonStyled>
+      <ButtonStyled onClick={handleClick}>
         {props.link.label}
       </ButtonStyled>  
     </ContainerStyled>

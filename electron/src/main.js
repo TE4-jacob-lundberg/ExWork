@@ -1,11 +1,12 @@
 /* eslint-disable */
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, screen, globalShortcut } = require('electron');
+const { app, BrowserWindow, screen, globalShortcut, ipcMain } = require('electron');
 const url = require('url');
 
 const path = require('path');
 
 let mainWindow = null;
+let windows = [];
 
 function createWindow () {
   const { height, width } = screen.getPrimaryDisplay().size;
@@ -15,13 +16,13 @@ function createWindow () {
     width,
     height,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
     },
     frame: false,
     transparent: true,
     movable: false,
     skipTaskbar: true,
-    alwaysOnTop: true,
     backgroundColor: '#00000000',
     show: false,
   });
@@ -60,13 +61,29 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
 app.on('ready', () => {
   globalShortcut.register('F10', () => {
-    if (mainWindow.isVisible()) mainWindow.hide();
-    else mainWindow.show();
+    windows = BrowserWindow.getAllWindows();
+    if (mainWindow.isVisible()) {
+      windows.forEach(win => {
+        win.hide();
+      });
+    } else {
+      windows.forEach(win => {
+        win.show();
+      });
+    }
   });
   globalShortcut.register('F12', () => {
     mainWindow.webContents.openDevTools()
   });
 });
+
+ipcMain.handle('open-link', (event, url) => {
+  const win = new BrowserWindow({
+    alwaysOnTop: true,
+  });
+
+  win.loadURL(url);
+  windows.push(win);
+})

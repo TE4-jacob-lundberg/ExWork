@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkComponent.tsx renders as expected 1`] = `
+<div>
+  <div
+    class="css-1r0g0mq"
+  >
+    <button
+      class="css-1qbtfbw"
+    >
+      test
+    </button>
+  </div>
+</div>
+`;
