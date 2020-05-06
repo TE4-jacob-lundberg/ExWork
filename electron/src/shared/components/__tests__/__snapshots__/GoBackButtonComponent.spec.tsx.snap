@@ -3,7 +3,7 @@
 exports[`GoBackButtonComponent.tsx doesn't show on root route 1`] = `
 <div>
   <div
-    class="css-1lkolb"
+    class="css-za4zro"
   >
     Go back
     <i
@@ -24,7 +24,7 @@ exports[`GoBackButtonComponent.tsx doesn't show on root route 2`] = `
 exports[`GoBackButtonComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-1lkolb"
+    class="css-za4zro"
   >
     Go back
     <i

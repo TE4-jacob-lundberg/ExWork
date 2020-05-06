@@ -4,13 +4,13 @@ export interface IGame {
   id: string;
   title: string;
   abbreviation: string | null;
-  image: IGameImage;
+  image?: IGameImage;
   links: ILink[];
+  fileNames: string[];
 }
 
 export interface IGameImage {
   name: string;
-  headerPos: IPosition;
   bannerPos: IPosition;
 }
 
@@ -26,10 +26,6 @@ export const standardGames: IGame[] = [
     abbreviation: 'CS:GO',
     image: {
       name: 'csgo.jpg',
-      headerPos: {
-        x: '0',
-        y: '25%',
-      },
       bannerPos: {
         x: '50%',
         y: '0',
@@ -41,6 +37,7 @@ export const standardGames: IGame[] = [
       { label: 'Steam Guide SprayPatterns', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=378325692'},
       { label: 'Steam Market', url: 'https://steamcommunity.com/market/search?l=swedish&appid=730'},
     ],
+    fileNames: ['csgo.exe', 'csgo.app'],
   },
   {
     id: 'valorant',
@@ -48,10 +45,6 @@ export const standardGames: IGame[] = [
     abbreviation: 'valorant',
     image: {
       name: 'valorant.jpg',
-      headerPos: {
-        x: '0',
-        y: '45%',
-      },
       bannerPos: {
         x: '50%',
         y: '0',
@@ -60,6 +53,7 @@ export const standardGames: IGame[] = [
     links: [
       { label: 'Wiki', url: 'https://valorant.fandom.com/wiki/Valorant_Wiki'},
     ],
+    fileNames: ['VALORANT.exe', 'VALORANT.app'],
   },
   {
     id: 'codmw',
@@ -67,10 +61,6 @@ export const standardGames: IGame[] = [
     abbreviation: 'CoD: MW',
     image: {
       name: 'cod_mw.jpg',
-      headerPos: {
-        x: '0',
-        y: '5%',
-      },
       bannerPos: {
         x: '50%',
         y: '0',
@@ -79,6 +69,7 @@ export const standardGames: IGame[] = [
     links: [
       { label: 'Wiki', url: 'https://callofduty.fandom.com/wiki/Portal:Call_of_Duty:_Modern_Warfare_(2019)'},
     ],
+    fileNames: ['ModernWarfare.exe', 'ModernWarfare.app'],
   },
   // {
   //   title: 'League of Legends',

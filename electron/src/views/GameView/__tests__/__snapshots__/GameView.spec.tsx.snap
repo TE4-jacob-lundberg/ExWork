@@ -6,43 +6,43 @@ exports[`GameView.tsx renders correctly 1`] = `
     class="css-7vcppj"
   >
     <div
-      class="css-f1bf40"
+      class="css-kr453a"
     />
     <div
       class="css-cjmacl"
     >
       <div
-        class="css-nijhdc"
+        class="css-64ei3j"
       >
         <button
-          class="css-1qbtfbw"
+          class="css-ezlaf4"
         >
           Wiki
         </button>
       </div>
       <div
-        class="css-1svfgn6"
+        class="css-8fh6p6"
       >
         <button
-          class="css-1qbtfbw"
+          class="css-ezlaf4"
         >
           CS:GO Stash
         </button>
       </div>
       <div
-        class="css-nijhdc"
+        class="css-64ei3j"
       >
         <button
-          class="css-1qbtfbw"
+          class="css-ezlaf4"
         >
           Steam Guide SprayPatterns
         </button>
       </div>
       <div
-        class="css-1svfgn6"
+        class="css-8fh6p6"
       >
         <button
-          class="css-1qbtfbw"
+          class="css-ezlaf4"
         >
           Steam Market
         </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Styled from '@emotion/styled';
 
 import AppRouter from './AppRouter';
@@ -7,6 +7,10 @@ import './App.css';
 interface Props {}
 
 const App: React.FC<Props> = function () {
+  useEffect(() => {
+    localStorage.setItem('alreadyNotifiedOfRunningGame', 'false');
+  }, []);
+
   const AppContainerStyled = Styled.div`
     height: 100%;
     width: 100%;

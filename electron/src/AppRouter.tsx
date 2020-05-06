@@ -14,6 +14,9 @@ const AppRouter: React.FC<Props> = function () {
     height: 70vh;
     width: 70vw;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `;
 
   return (

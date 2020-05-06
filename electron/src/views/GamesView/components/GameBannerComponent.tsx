@@ -25,7 +25,7 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
     height: 100%;
     display: flex;
     justify-content: center;
-    background: url(${require(`../../../shared/assets/images/${props.game.image.name}`)}) ${props.game.image.bannerPos.x || '0'} ${props.game.image.bannerPos.y || '0'} no-repeat;
+    background: url(${require(`../../../shared/assets/images/${props.game.image!.name}`)}) ${props.game.image!.bannerPos.x || '0'} ${props.game.image!.bannerPos.y || '0'} no-repeat;
     background-size: cover;
     filter: grayscale(${grayScale}%);
   `;

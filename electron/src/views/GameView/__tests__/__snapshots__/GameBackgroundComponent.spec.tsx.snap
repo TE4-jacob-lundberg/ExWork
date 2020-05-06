@@ -3,7 +3,7 @@
 exports[`GameBackgroundComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-1kpn1xa"
+    class="css-kr453a"
   />
 </div>
 `;

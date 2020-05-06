@@ -14,12 +14,13 @@ interface Props {
 const LinkComponent: React.FC<Props> = function (props: Props) {
   function handleClick(): void {
     ipcRenderer.invoke('open-link', props.link.url)
-      // eslint-disable-next-line no-console
       .catch((err: ErrorEvent) => console.error(err));
   }
 
   const ContainerStyled = Styled.div`
-    height: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
     width: 100%;
     background: ${props.background};
 
@@ -34,6 +35,8 @@ const LinkComponent: React.FC<Props> = function (props: Props) {
     width: 100%;
     color: #FFF;
     height: 100%;
+    font-size: 1.25rem;
+    padding: 12px 0;
 
     &:hover {
       color: #000;

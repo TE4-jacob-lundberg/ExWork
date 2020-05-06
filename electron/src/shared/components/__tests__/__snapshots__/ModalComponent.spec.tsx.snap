@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalComponent.tsx renders correctly 1`] = `
+<div>
+  <div
+    class="Modal css-1erj6aa"
+  >
+    <h1
+      class="css-17mgc3o"
+    >
+      Test
+    </h1>
+    <i
+      class="material-icons css-52vivv-ModalComponent"
+      data-testid="close-modal"
+    >
+      close
+    </i>
+    <p
+      class="css-11p02fo"
+    >
+      text
+    </p>
+    <div
+      class="css-3to2p8"
+    >
+      <button
+        class="css-1mir8w9"
+        data-testid="cancel-modal"
+      >
+        Cancel
+      </button>
+      <button
+        class="css-a4emjt"
+        data-testid="continue-modal"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+`;

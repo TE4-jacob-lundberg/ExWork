@@ -31,7 +31,7 @@
     "indent": ["error", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "no-console": "warn",
+    "no-console": ["warn", { "allow": ["error"] }],
     "eol-last": ["error", "always"],
     "lines-between-class-members": ["error", "always"],
     "no-unused-vars": "off",

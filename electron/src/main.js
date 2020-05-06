@@ -2,8 +2,8 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, screen, globalShortcut, ipcMain } = require('electron');
 const url = require('url');
-
 const path = require('path');
+const { windowManager } = require('node-window-manager');
 
 let mainWindow = null;
 let windows = [];
@@ -21,6 +21,7 @@ function createWindow () {
     frame: false,
     transparent: true,
     movable: false,
+    resizable: false,
     skipTaskbar: true,
     backgroundColor: '#00000000',
     show: false,
@@ -64,7 +65,10 @@ app.on('ready', () => {
   globalShortcut.register('F10', () => {
     windows = BrowserWindow.getAllWindows();
     if (mainWindow.isVisible()) windows.forEach(win => win.hide());
-    else windows.forEach(win => win.show());
+    else {
+      mainWindow.webContents.send('showing-windows', windowManager.getActiveWindow());
+      windows.forEach(win => win.show());
+    }
   });
   globalShortcut.register('F12', () => {
     mainWindow.webContents.openDevTools()

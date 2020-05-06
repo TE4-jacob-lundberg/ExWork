@@ -6,19 +6,19 @@ exports[`LinkCollectionComponent.tsx renders correctly 1`] = `
     class="css-cjmacl"
   >
     <div
-      class="css-nijhdc"
+      class="css-64ei3j"
     >
       <button
-        class="css-1qbtfbw"
+        class="css-ezlaf4"
       >
         link1
       </button>
     </div>
     <div
-      class="css-1svfgn6"
+      class="css-8fh6p6"
     >
       <button
-        class="css-1qbtfbw"
+        class="css-ezlaf4"
       >
         link2
       </button>
