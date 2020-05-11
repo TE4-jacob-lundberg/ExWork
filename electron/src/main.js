@@ -20,10 +20,10 @@ function createWindow () {
     },
     frame: false,
     transparent: true,
+    hasShadow: false,
     movable: false,
     resizable: false,
     skipTaskbar: true,
-    backgroundColor: '#00000000',
     show: false,
   });
 

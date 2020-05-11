@@ -2,9 +2,10 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Styled from '@emotion/styled';
 
-import { standardGames } from '../../shared/constants/standardGames';
+import { Games } from '../../shared/helpers/Games';
 import GameBackgroundComponent from './components/GameBackgroundComponent';
 import LinkCollectionComponent from './components/LinkCollectionComponent';
+import PageTitleComponent from '../../shared/components/PageTitleComponent';
 
 interface Props {}
 
@@ -15,7 +16,7 @@ interface Params {
 const GameView: React.FC<Props> = function () {
   const params = useParams<Params>();
 
-  const gameData = standardGames.find(game => game.id === params.gameID)!;
+  const gameData = Games.all().find(game => game.id === params.gameID)!;
 
   const ContainerStyled = Styled.div`
     height: 100%;
@@ -25,6 +26,7 @@ const GameView: React.FC<Props> = function () {
 
   return (
     <ContainerStyled>
+      <PageTitleComponent title={gameData.title} />
       <GameBackgroundComponent 
         game={gameData}
       />

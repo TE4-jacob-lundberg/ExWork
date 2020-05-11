@@ -6,7 +6,16 @@ exports[`GameView.tsx renders correctly 1`] = `
     class="css-7vcppj"
   >
     <div
-      class="css-kr453a"
+      class="css-1jenwj8"
+    >
+      <h1
+        class="css-g7rarf"
+      >
+        Counter-Strike: Global Offensive
+      </h1>
+    </div>
+    <div
+      class="css-1xeghz2"
     />
     <div
       class="css-cjmacl"

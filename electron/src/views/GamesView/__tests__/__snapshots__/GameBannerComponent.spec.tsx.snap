@@ -3,7 +3,7 @@
 exports[`GameBannerComponent.tsx redirects to its links on click 1`] = `
 <div>
   <div
-    class="css-100piz2"
+    class="css-12aeufe"
     data-testid="banner"
   />
 </div>
@@ -15,14 +15,14 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-100piz2"
+        class="css-12aeufe"
         data-testid="banner"
       />
     </div>
   </body>,
   "container": <div>
     <div
-      class="css-100piz2"
+      class="css-12aeufe"
       data-testid="banner"
     />
   </div>,

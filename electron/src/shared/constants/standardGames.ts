@@ -27,7 +27,7 @@ export const standardGames: IGame[] = [
     image: {
       name: 'csgo.jpg',
       bannerPos: {
-        x: '50%',
+        x: '50',
         y: '0',
       },
     },
@@ -37,7 +37,7 @@ export const standardGames: IGame[] = [
       { label: 'Steam Guide SprayPatterns', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=378325692'},
       { label: 'Steam Market', url: 'https://steamcommunity.com/market/search?l=swedish&appid=730'},
     ],
-    fileNames: ['csgo.exe', 'csgo.app'],
+    fileNames: ['csgo.exe', 'csgo.app', 'Visual Studio Code.app'],
   },
   {
     id: 'valorant',
@@ -46,7 +46,7 @@ export const standardGames: IGame[] = [
     image: {
       name: 'valorant.jpg',
       bannerPos: {
-        x: '50%',
+        x: '50',
         y: '0',
       },
     },
@@ -62,7 +62,7 @@ export const standardGames: IGame[] = [
     image: {
       name: 'cod_mw.jpg',
       bannerPos: {
-        x: '50%',
+        x: '50',
         y: '0',
       },
     },
@@ -71,9 +71,39 @@ export const standardGames: IGame[] = [
     ],
     fileNames: ['ModernWarfare.exe', 'ModernWarfare.app'],
   },
-  // {
-  //   title: 'League of Legends',
-  //   abbreviation: 'LoL',
-  //   image: 'lol.jpg',
-  // },
+  {
+    id: 'lol',
+    title: 'League of Legends',
+    abbreviation: 'LoL',
+    image: {
+      name: 'lol.jpg',
+      bannerPos: {
+        x: '50',
+        y: '0',
+      },
+    },
+    links: [
+      { label: 'Wiki', url: 'https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki' },
+    ],
+    fileNames: ['.exe', '.app'],
+  },
+  {
+    id: 'csgo',
+    title: 'Counter-Strike: Global Offensive',
+    abbreviation: 'CS:GO',
+    image: {
+      name: 'csgo.jpg',
+      bannerPos: {
+        x: '50',
+        y: '0',
+      },
+    },
+    links: [
+      { label: 'Wiki', url: 'https://counterstrike.fandom.com/wiki/Counter-Strike:_Global_Offensive'},
+      { label: 'CS:GO Stash', url: 'http://csgostash.com'},
+      { label: 'Steam Guide SprayPatterns', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=378325692'},
+      { label: 'Steam Market', url: 'https://steamcommunity.com/market/search?l=swedish&appid=730'},
+    ],
+    fileNames: ['csgo.exe', 'csgo.app', 'Visual Studio Code.app'],
+  },
 ];

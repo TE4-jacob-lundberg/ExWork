@@ -11,10 +11,6 @@ const testComponent = (<GameBannerComponent
     abbreviation: 'G1',
     image: {
       name: 'csgo.jpg',
-      headerPos: {
-        x: '0',
-        y: '25%',
-      },
       bannerPos: {
         x: '50%',
         y: '0',
@@ -39,6 +35,6 @@ describe('GameBannerComponent.tsx', () => {
     
     fireEvent.click(getByTestId('banner'));
 
-    expect(window.location.pathname).toBe('/g1');
+    expect(window.location.pathname).toMatch(/\/g1/);
   });
 });

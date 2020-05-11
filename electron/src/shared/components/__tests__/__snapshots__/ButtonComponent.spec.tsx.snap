@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonComponent.tsx renders correctly 1`] = `
+<div>
+  <button
+    class="css-i7mr7"
+  >
+    Click me
+  </button>
+</div>
+`;

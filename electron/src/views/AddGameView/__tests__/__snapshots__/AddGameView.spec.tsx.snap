@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddGameView.tsx renders correctly 1`] = `
+<div>
+  <div
+    class="css-1jenwj8"
+  >
+    <h1
+      class="css-g7rarf"
+    >
+      Add a Game
+    </h1>
+  </div>
+  <div
+    class="css-1wlt7z5"
+  >
+    <form>
+      <h1
+        class="css-1vjmso2"
+      >
+        Game Information
+      </h1>
+      <section
+        class="css-6a1pbd"
+      >
+        <label
+          class="css-1e2fy0l"
+        >
+          ID
+        </label>
+        <input
+          class="css-3auqkn"
+          data-testid="game-id"
+          name="id"
+          placeholder="Unique game id"
+          type="text"
+          value=""
+        />
+        <label
+          class="css-1e2fy0l"
+        >
+          Title
+        </label>
+        <input
+          class="css-3auqkn"
+          data-testid="game-title"
+          name="title"
+          placeholder="Game Title"
+          type="text"
+          value=""
+        />
+                  
+        <label
+          class="css-1e2fy0l"
+        >
+          Abbreviation
+        </label>
+        <input
+          class="css-3auqkn"
+          data-testid="game-abbr"
+          name="abbreviation"
+          placeholder="Game Abbreviation"
+          type="text"
+          value=""
+        />
+      </section>
+      <h1
+        class="css-1vjmso2"
+      >
+        Image Settings
+      </h1>
+      <section
+        class="css-6a1pbd"
+      >
+        <label
+          class="css-1e2fy0l"
+        >
+          Image
+        </label>
+        <input
+          class="css-3auqkn"
+          type="file"
+        />
+        
+      </section>
+      <button
+        class="css-15xhp3h"
+        data-testid="submit-form"
+        type="submit"
+      >
+        Save
+        <i
+          class="material-icons"
+        >
+          save
+        </i>
+      </button>
+    </form>
+    <div
+      class="css-m2j5dl"
+      x="50"
+      y="0"
+    />
+  </div>
+</div>
+`;

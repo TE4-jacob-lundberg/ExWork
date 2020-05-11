@@ -3,9 +3,14 @@ import { useHistory } from 'react-router-dom';
 import Styled from '@emotion/styled';
 
 import { IGame } from '../../../shared/constants/standardGames';
+import { routes } from '../../../shared/constants/routes';
 
 interface Props {
   game: IGame;
+}
+
+function isBlob(string: string): boolean {
+  return (string.substr(0, 4) === 'data');
 }
 
 const GameBannerComponent: React.FC<Props> = function (props: Props) {
@@ -25,7 +30,7 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
     height: 100%;
     display: flex;
     justify-content: center;
-    background: url(${require(`../../../shared/assets/images/${props.game.image!.name}`)}) ${props.game.image!.bannerPos.x || '0'} ${props.game.image!.bannerPos.y || '0'} no-repeat;
+    background: url(${isBlob(props.game.image!.name) ? props.game.image!.name : require(`../../../shared/assets/images/${props.game.image!.name}`)}) ${props.game.image!.bannerPos.x || '0'}% ${props.game.image!.bannerPos.y || '0'}% no-repeat;
     background-size: cover;
     filter: grayscale(${grayScale}%);
   `;
@@ -34,7 +39,7 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
     <ContainerStyled 
       onMouseEnter={handleMouseEnter} 
       onMouseLeave={handleMouseLeave} 
-      onClick={(): void => history.push(`/${props.game.id}`)}
+      onClick={(): void => history.push(routes.gameLinks.replace(':gameID', props.game.id))}
       data-testid="banner"
     />
   );

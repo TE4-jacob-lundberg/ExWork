@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Styled from '@emotion/styled';
 
 import AppRouter from './AppRouter';
@@ -16,16 +17,18 @@ const App: React.FC<Props> = function () {
     width: 100%;
     margin: 0;
     padding: 0;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     align-items: center;
   `;
 
   return (
-    <AppContainerStyled>
-      <AppRouter />
-    </AppContainerStyled>
+    <BrowserRouter>
+      <AppContainerStyled>
+        <AppRouter />
+      </AppContainerStyled>
+    </BrowserRouter>
   );
 };
 
