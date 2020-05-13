@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`GameBackgroundComponent.tsx renders correctly 1`] = `
-<div>
-  <div
-    class="css-rr70rm"
-  />
-</div>
-`;

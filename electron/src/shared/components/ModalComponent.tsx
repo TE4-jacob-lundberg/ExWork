@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Styled from '@emotion/styled';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { css, jsx } from '@emotion/core';
+import { css, jsx, keyframes } from '@emotion/core'; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 /* @jsx jsx */
+
+const containerKeyframes = keyframes`
+  0% {align-items: flex-end;}
+`; 
 
 type ActionProps = {
   background: string;
@@ -11,11 +14,11 @@ type ActionProps = {
 
 interface Props {
   title: string;
-  body: string;
+  children: ReactNode;
   onClose: () => void;
   cancelAble?: boolean;
   cancelLabel?: string;
-  onCancel: () => void;
+  onCancel?: () => void;
   continueLabel?: string; 
   onContinue: () => void;
 }
@@ -32,21 +35,24 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
     height: 500px;
     width: 500px;
     padding-bottom: 8px;
+    border: solid 1px #444;
+    animation: ${containerKeyframes} 5s;
   `;
 
   const TitleStyled = Styled.h1`
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     background: #444;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 8px 32px;
   `;
 
-  const BodyStyled = Styled.p`
-    width: 80%;
+  const BodyStyled = Styled.div`
+    width: 90%;
     margin-top: 16px;
-    text-align: center;
     margin: auto;
     font-size: 1.5rem;
   `;
@@ -72,7 +78,7 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
   `;
 
   return (
-    <ContainerStyled className="Modal">
+    <ContainerStyled>
       <TitleStyled>{props.title}</TitleStyled>
       <i 
         css={css`
@@ -86,10 +92,10 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
       >
         close
       </i>
-      <BodyStyled>{props.body}</BodyStyled>
+      <BodyStyled>{props.children}</BodyStyled>
       <ActionsContainerStyled>
         {props.cancelAble && <ActionStyled 
-          onClick={(): void => props.onCancel()}
+          onClick={(): void => props.onCancel && props.onCancel()}
           data-testid="cancel-modal"
           background="red"
         >

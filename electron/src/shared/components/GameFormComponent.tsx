@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import Styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import { IGameFormFields } from '../helpers/Types';
+import { IGameFormFields, IGameFormErrors } from '../helpers/Types';
 import ButtonComponent from '../components/ButtonComponent';
+import ModalComponent from '../components/ModalComponent';
 
 const ContainerStyled = Styled.div`
   display: grid;
@@ -13,6 +14,7 @@ const ContainerStyled = Styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+  border-radius: 5px;
   
   & > form {
     height: 100%;
@@ -38,10 +40,18 @@ const SectionStyled = Styled.section`
   }
 `;
 
-const InputLabelStyled = Styled.label`
+type LabelProps = {
+  error?: boolean;
+}
+
+const InputLabelStyled = Styled.label<LabelProps>`
+  color: ${(props): string => props.error ? 'red' : ''};
+  display: flex;
+  align-items: center;
 `;
 
 const InputStyled = Styled.input`
+  height: 24px;
   &:focus {
     outline: none;
   }
@@ -59,7 +69,7 @@ const RangeInputStyled = Styled.input<RangeProps>`
     position: absolute;
     left: calc(${(props): string => (Number(props.value)).toString()}% - 8px);
     top: -12px;
-  }
+  } 
 `;
 
 type ImageProps = {
@@ -77,15 +87,35 @@ const ImageStyled = Styled.div<ImageProps>`
   background-size: cover;
 `;
 
+const ErrorMessageStyled = Styled.li`
+  color: red;
+  margin: 12px 0;
+`;
+
 interface Props {
   initialValues?: IGameFormFields;
   onSubmit: (values: IGameFormFields) => void;
 }
 
 const GameFormComponent: React.FC<Props> = function (props: Props) {
+  const [showModal, setShowModal] = useState(false);
   const formik = useFormik({
-    initialValues: {id: '', title: '', abbreviation: '', image: '', xAxis: '50', yAxis: '0', links: [], fileNames: []},
-    onSubmit: (values): void => props.onSubmit(values),
+    initialValues: {title: '', abbreviation: '', image: '', xAxis: '50', yAxis: '0', links: [], fileNames: [localStorage.getItem('latestGameFile')!]},
+    onSubmit: (values): void => {
+      props.onSubmit(values);
+    },
+    validate: (values): IGameFormErrors => {
+      const errors: IGameFormErrors = {};
+
+      if (!values.title) errors.title = 'You need to enter a title for the game';
+      if (!values.image) errors.image = 'You need to select an image to represent the game';
+
+      if (Object.values(errors).find(Boolean)) setShowModal(true);
+
+      return errors;
+    },
+    validateOnBlur: false,
+    validateOnChange: false,
   });
 
   function handleImageChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -99,58 +129,70 @@ const GameFormComponent: React.FC<Props> = function (props: Props) {
   }
 
   return (
-    <ContainerStyled>
-      <form onSubmit={formik.handleSubmit}>
-        <SectionHeaderStyled>Game Information</SectionHeaderStyled>
-        <SectionStyled>
-          <InputLabelStyled>ID</InputLabelStyled>
-          <InputStyled type="text" placeholder="Unique game id" {...formik.getFieldProps('id')} data-testid="game-id" />
-          <InputLabelStyled>Title</InputLabelStyled>
-          <InputStyled type="text" placeholder="Game Title" {...formik.getFieldProps('title')} data-testid="game-title" />          <InputLabelStyled>Abbreviation</InputLabelStyled>
-          <InputStyled type="text" placeholder="Game Abbreviation" {...formik.getFieldProps('abbreviation')} data-testid="game-abbr"/>
-        </SectionStyled>
-        <SectionHeaderStyled>Image Settings</SectionHeaderStyled>
-        <SectionStyled>
-          <InputLabelStyled>Image</InputLabelStyled>
-          <InputStyled type="file" 
-            onChange={handleImageChange} 
-          />
-          {formik.values.image && (
-            <>
-              <InputLabelStyled>X-axis</InputLabelStyled>
-              <RangeInputStyled type="range" min="0" max="100" {...formik.getFieldProps('xAxis')} />
-              <InputLabelStyled>Y-axis</InputLabelStyled>
-              <RangeInputStyled type="range" min="0" max="100" {...formik.getFieldProps('yAxis')} />
-            </>)}
-        </SectionStyled>
+    <>
+      <ContainerStyled>
+        <form onSubmit={formik.handleSubmit}>
+          <SectionHeaderStyled>Game Information</SectionHeaderStyled>
+          <SectionStyled>
+            <InputLabelStyled error={!!formik.errors.title}>Title*</InputLabelStyled>
+            <InputStyled type="text" {...formik.getFieldProps('title')} data-testid="game-title" />          
+            <InputLabelStyled>Abbreviation</InputLabelStyled>
+            <InputStyled type="text" {...formik.getFieldProps('abbreviation')} data-testid="game-abbr"/>
+            <InputLabelStyled>Game file (*.exe, *.app)</InputLabelStyled>
+            <InputStyled type="text" {...formik.getFieldProps('fileNames')} />
+          </SectionStyled>
+          <SectionHeaderStyled>Image Settings</SectionHeaderStyled>
+          <SectionStyled>
+            <InputLabelStyled error={!!formik.errors.image}>Image*</InputLabelStyled>
+            <InputStyled type="file" 
+              onChange={handleImageChange} 
+            />
+            {formik.values.image && (
+              <>
+                <InputLabelStyled>X-axis</InputLabelStyled>
+                <RangeInputStyled type="range" min="0" max="100" {...formik.getFieldProps('xAxis')} />
+                <InputLabelStyled>Y-axis</InputLabelStyled>
+                <RangeInputStyled type="range" min="0" max="100" {...formik.getFieldProps('yAxis')} />
+              </>)}
+          </SectionStyled>
 
-        <ButtonComponent 
-          type="submit"
-          background="#555"
-          styling={css`
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            font-size: 1.5rem;
-            
-            & > i {
-              margin-left: 8px;
-            }
-          `}
-          data-testid="submit-form"
-        >
-          Save
-          <i className="material-icons">
-            save
-          </i>
-        </ButtonComponent>
-      </form>
-      <ImageStyled 
-        image={formik.values.image} 
-        x={formik.values.xAxis}
-        y={formik.values.yAxis}
-      />
-    </ContainerStyled>
+          <ButtonComponent 
+            type="submit"
+            background="#555"
+            styling={css`
+              position: absolute;
+              bottom: 12px;
+              left: 12px;
+              font-size: 1.5rem;
+              
+              & > i {
+                margin-left: 8px;
+              }
+            `}
+            data-testid="submit-form"
+          >
+            Save
+            <i className="material-icons">
+              save
+            </i>
+          </ButtonComponent>
+        </form>
+        <ImageStyled 
+          image={formik.values.image} 
+          x={formik.values.xAxis}
+          y={formik.values.yAxis}
+        />
+      </ContainerStyled>
+      {showModal && <ModalComponent
+        title="You need to fix these errors to save your game"
+        onClose={(): void => setShowModal(false)}
+        onContinue={(): void => setShowModal(false)}
+      >
+        <ul>
+          {Object.values(formik.errors).filter(Boolean).map((value, i) => (<ErrorMessageStyled key={i}>{value || ''}</ErrorMessageStyled>))}
+        </ul>
+      </ModalComponent>}
+    </>
   );
 };
 

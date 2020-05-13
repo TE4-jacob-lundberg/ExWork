@@ -3,7 +3,7 @@
 exports[`GameFormComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-1wlt7z5"
+    class="css-o6jotw"
   >
     <form>
       <h1
@@ -15,42 +15,37 @@ exports[`GameFormComponent.tsx renders correctly 1`] = `
         class="css-6a1pbd"
       >
         <label
-          class="css-1e2fy0l"
+          class="css-13m3dri"
         >
-          ID
+          Title*
         </label>
         <input
-          class="css-3auqkn"
-          data-testid="game-id"
-          name="id"
-          placeholder="Unique game id"
-          type="text"
-          value=""
-        />
-        <label
-          class="css-1e2fy0l"
-        >
-          Title
-        </label>
-        <input
-          class="css-3auqkn"
+          class="css-1o0il4p"
           data-testid="game-title"
           name="title"
-          placeholder="Game Title"
           type="text"
           value=""
         />
-                  
         <label
-          class="css-1e2fy0l"
+          class="css-13m3dri"
         >
           Abbreviation
         </label>
         <input
-          class="css-3auqkn"
+          class="css-1o0il4p"
           data-testid="game-abbr"
           name="abbreviation"
-          placeholder="Game Abbreviation"
+          type="text"
+          value=""
+        />
+        <label
+          class="css-13m3dri"
+        >
+          Game file (*.exe, *.app)
+        </label>
+        <input
+          class="css-1o0il4p"
+          name="fileNames"
           type="text"
           value=""
         />
@@ -64,18 +59,18 @@ exports[`GameFormComponent.tsx renders correctly 1`] = `
         class="css-6a1pbd"
       >
         <label
-          class="css-1e2fy0l"
+          class="css-13m3dri"
         >
-          Image
+          Image*
         </label>
         <input
-          class="css-3auqkn"
+          class="css-1o0il4p"
           type="file"
         />
         
       </section>
       <button
-        class="css-15xhp3h"
+        class="css-1oz2fdc"
         data-testid="submit-form"
         type="submit"
       >

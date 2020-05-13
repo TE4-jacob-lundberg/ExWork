@@ -3,9 +3,12 @@
 exports[`GameBannerComponent.tsx redirects to its links on click 1`] = `
 <div>
   <div
-    class="css-12aeufe"
     data-testid="banner"
-  />
+  >
+    <div
+      class="css-heeno1"
+    />
+  </div>
 </div>
 `;
 
@@ -15,16 +18,22 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-12aeufe"
         data-testid="banner"
-      />
+      >
+        <div
+          class="css-heeno1"
+        />
+      </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="css-12aeufe"
       data-testid="banner"
-    />
+    >
+      <div
+        class="css-heeno1"
+      />
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

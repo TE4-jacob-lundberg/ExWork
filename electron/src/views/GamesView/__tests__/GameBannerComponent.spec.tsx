@@ -35,6 +35,8 @@ describe('GameBannerComponent.tsx', () => {
     
     fireEvent.click(getByTestId('banner'));
 
-    expect(window.location.pathname).toMatch(/\/g1/);
+    setTimeout(() => {
+      expect(window.location.pathname).toMatch(/\/g1/);
+    }, 1500);
   });
 });

@@ -10,12 +10,13 @@ const mockedContinue = jest.fn();
 
 const testComponent = <ModalComponent 
   title="Test"
-  body="text"
   cancelAble
   onClose={mockedClose}
   onCancel={mockedCancel}
   onContinue={mockedContinue}
-/>;
+>
+  text
+</ModalComponent>;
 
 describe('ModalComponent.tsx', () => {
   it('renders correctly', () => {

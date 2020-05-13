@@ -4,19 +4,18 @@ import Styled from '@emotion/styled';
 import { IpcRendererEvent } from 'electron';
 import { Window } from 'node-window-manager';
 import { useHistory } from 'react-router-dom';
+import { useIndexedDB } from 'react-indexed-db';
 
 import { electron } from '../../shared/helpers/BrowserElectron';
 import { routes } from '../../shared/constants/routes';
-import { IGame } from '../../shared/constants/standardGames';
+import { IGame } from '../../shared/helpers/Types';
 import GameBannerComponent from './components/GameBannerComponent';
 import ModalComponent from '../../shared/components/ModalComponent';
 import ButtonComponent from '../../shared/components/ButtonComponent';
-import { Games } from '../../shared/helpers/Games';
 
 /* @jsx jsx */
 
 const ipcRenderer = electron.ipcRenderer;
-
 
 const ContainerStyled = Styled.div`
   height: 100vh;
@@ -43,10 +42,12 @@ const BannerContainerStyled = Styled.div<ContainerProps>`
 `;
 
 const GameTrioContainerStyled = Styled.div`
+  position: relative;
   width: 70vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 4px;
+  padding: -2px 0;
 `;
 
 const buttonStyling = css`
@@ -59,24 +60,32 @@ interface Props {}
 const GamesView: React.FC<Props> = function () {
   const [runningGame, setRunningGame] = useState<IGame>({title: '', id: '', abbreviation: '', links: [], fileNames: []});
   const [showModal, setShowModal] = useState(false);
+  const [games, setGames] = useState<IGame[]>([]);
   const [page, setPage] = useState(0);
+  const db = useIndexedDB('games');
   const history = useHistory();
-  const allGames = Games.all();
 
+  // Add standardgames if there are none
   useEffect(() => {
-    if (!runningGame.id || localStorage.getItem('alreadyNotifiedOfRunningGame') === 'true') return;
-    localStorage.setItem('alreadyNotifiedOfRunningGame', 'true');
-    setShowModal(true);
-  }, [runningGame]);
+    if (games.length) return;
+    db.getAll().then((resp: IGame[]) => {
+      setGames(resp);
+    }).catch(err => console.error(err));
+  }, [db, games]);
 
+  // Check if there is a added game focused when overlay is turned on
   const handleShowingWindows = useCallback((_event: IpcRendererEvent , prevWin: Window): void => {
     if (!prevWin.id) return;
 
     const prevAppFileName = prevWin.path.match(/(?<=\/)[^/]*\..*$/)![0];
-    const identifiedGame = allGames.find(game => game.fileNames.includes(prevAppFileName));
-    if (identifiedGame) setRunningGame(identifiedGame);
-  }, [allGames]);
+    const identifiedGame = games.find(game => game.fileNames.includes(prevAppFileName));
+    if (identifiedGame) { 
+      setRunningGame(identifiedGame); 
+      localStorage.setItem('latestGameFile', prevAppFileName); 
+    }
+  }, [games]);
 
+  // Eventlisteners to handle toggling the overlay
   useEffect(() => {
     ipcRenderer.on('showing-windows', handleShowingWindows);
 
@@ -85,16 +94,24 @@ const GamesView: React.FC<Props> = function () {
     };
   }, [handleShowingWindows]);
 
+  // Toggle state which prevents modal form appearing again
+  useEffect(() => {
+    if (!runningGame.id || localStorage.getItem('alreadyNotifiedOfRunningGame') === runningGame.id) return;
+    localStorage.setItem('alreadyNotifiedOfRunningGame', runningGame.id);
+    setShowModal(true);
+  }, [runningGame]);
+
   function GameBanners(): JSX.Element[] {
     const acc: JSX.Element[] = [];
-    for (let index = 0; index < allGames.length; index += 3){ 
-      const last = index + 3 <= allGames.length - 1 ? index + 3 : allGames.length;
+    for (let index = 0; index < games.length; index += 3){ 
+      const last = index + 3 <= games.length - 1 ? index + 3 : games.length;
 
       acc.push((
         <GameTrioContainerStyled key={index}>
-          {allGames.slice(index, last).map(game => 
+          {games.slice(index, last).map((game, i) => 
             <GameBannerComponent 
               game={game}
+              position={i}
               key={game.title}
             />
           )}
@@ -113,14 +130,6 @@ const GamesView: React.FC<Props> = function () {
 
   return (
     <React.Fragment>
-      {showModal && <ModalComponent 
-        title="Recognized Game"
-        body={`I recognized "${runningGame.title}" is running in the background. Do you want to see its links?`}
-        onClose={(): void => setShowModal(false)}
-        cancelAble
-        onCancel={(): void => setShowModal(false)}
-        onContinue={(): void => history.push(routes.gameLinks.replace(':gameID', runningGame.id))}
-      />}
       <ButtonComponent
         onClick={handlePrevPage}
         iconSize="48px"
@@ -135,14 +144,14 @@ const GamesView: React.FC<Props> = function () {
         </i>
       </ButtonComponent>
       <ContainerStyled>
-        <BannerContainerStyled page={page} gameAmount={allGames.length}>
+        <BannerContainerStyled page={page} gameAmount={games.length}>
           {GameBanners()}
         </BannerContainerStyled>
       </ContainerStyled>
       <ButtonComponent
         onClick={handleNextPage}
         iconSize="48px"
-        disabled={page === Math.ceil(allGames.length / 3) - 1}
+        disabled={page === Math.ceil(games.length / 3) - 1}
         styling={css`
           right: -100px;
           ${buttonStyling.styles}
@@ -166,6 +175,17 @@ const GamesView: React.FC<Props> = function () {
           add
         </i>
       </ButtonComponent>
+      {showModal && <ModalComponent 
+        title="Recognized Game"
+        onClose={(): void => setShowModal(false)}
+        cancelAble
+        onCancel={(): void => setShowModal(false)}
+        onContinue={(): void => history.push(routes.gameLinks.replace(':gameID', runningGame.id))}
+      >
+        <p>I recognize</p>
+        <h3>{runningGame.title}</h3>
+        <p>is running in the background. Do you want to see its links?</p>
+      </ModalComponent>}
     </React.Fragment>
   );
 };

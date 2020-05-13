@@ -3,10 +3,10 @@
 exports[`ModalComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="Modal css-1erj6aa"
+    class="css-14591wx"
   >
     <h1
-      class="css-17mgc3o"
+      class="css-gie5fi"
     >
       Test
     </h1>
@@ -16,11 +16,11 @@ exports[`ModalComponent.tsx renders correctly 1`] = `
     >
       close
     </i>
-    <p
-      class="css-11p02fo"
+    <div
+      class="css-l4ddcq"
     >
       text
-    </p>
+    </div>
     <div
       class="css-3to2p8"
     >

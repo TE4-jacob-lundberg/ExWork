@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Styled from '@emotion/styled';
+import { useIndexedDB } from 'react-indexed-db';
 
-import { Games } from '../../shared/helpers/Games';
-import GameBackgroundComponent from './components/GameBackgroundComponent';
 import LinkCollectionComponent from './components/LinkCollectionComponent';
 import PageTitleComponent from '../../shared/components/PageTitleComponent';
+import { IGame } from '../../shared/helpers/Types';
 
 interface Props {}
 
@@ -15,8 +15,13 @@ interface Params {
 
 const GameView: React.FC<Props> = function () {
   const params = useParams<Params>();
+  const [gameData, setGameData] = useState<IGame>();
+  const db = useIndexedDB('games');
 
-  const gameData = Games.all().find(game => game.id === params.gameID)!;
+  useEffect(() => {
+    if (gameData) return;
+    db.getByID(params.gameID).then(resp => setGameData(resp));
+  }, [db, params.gameID, gameData]);
 
   const ContainerStyled = Styled.div`
     height: 100%;
@@ -24,15 +29,25 @@ const GameView: React.FC<Props> = function () {
     position: relative;
   `;
 
+  const BackgroundStyled = Styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    filter: grayscale(50%);
+    background: url(${gameData && gameData.image!.url }) 50% ${gameData ? gameData.image!.bannerPos.y : '0'} no-repeat;
+    background-size: cover;
+  `;
+
   return (
     <ContainerStyled>
-      <PageTitleComponent title={gameData.title} />
-      <GameBackgroundComponent 
-        game={gameData}
-      />
-      <LinkCollectionComponent 
-        links={gameData.links}
-      />
+      {gameData && (
+        <>
+          <PageTitleComponent title={gameData.title} />
+          <BackgroundStyled />
+          <LinkCollectionComponent links={gameData.links} />
+        </>
+      )}
     </ContainerStyled>
   );
 };

@@ -4,7 +4,6 @@ export interface ILink {
 }
 
 export interface IGameFormFields {
-  id: string;
   title: string;
   abbreviation: string;
   image: string; 
@@ -12,4 +11,25 @@ export interface IGameFormFields {
   yAxis: string;
   links: ILink[];
   fileNames: string[];
+}
+
+export interface IGameFormErrors { [id: string]: string; }
+
+export interface IGame {
+  id: string;
+  title: string;
+  abbreviation: string | null;
+  image?: IGameImage;
+  links: ILink[];
+  fileNames: string[];
+}
+
+export interface IGameImage {
+  url: string;
+  bannerPos: IPosition;
+}
+
+export interface IPosition {
+  x: string;
+  y: string;
 }

@@ -14,10 +14,18 @@ jest.mock('../../../shared/helpers/BrowserElectron.ts', () => {
   };
 });
 
+jest.mock('react-indexed-db', () => ({
+  useIndexedDB: (): object => {
+    return {
+      getAll: (): Promise<[]> => Promise.resolve([]),
+    };
+  },
+}));
+
 describe('GamesView.tsx', () => {
   it('renders correctly', () => {
     const { container } = routerFactory(<GamesView />);
-     
+
     expect(container).toMatchSnapshot();
   });
 });

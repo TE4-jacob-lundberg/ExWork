@@ -8,7 +8,7 @@ export function factory(component: JSX.Element): RenderResult {
   return render(component);
 }
 
-export function routerFactory(component: JSX.Element, options: any = {history: createBrowserHistory()}): RenderResult {
+export function routerFactory(component: JSX.Element, options: any = { history: createBrowserHistory() }): RenderResult {
   return factory(
     <Router history={options.history}>
       {component}

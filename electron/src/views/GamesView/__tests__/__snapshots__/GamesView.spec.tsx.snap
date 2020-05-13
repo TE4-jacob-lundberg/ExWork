@@ -16,37 +16,8 @@ exports[`GamesView.tsx renders correctly 1`] = `
     class="css-1755h8c"
   >
     <div
-      class="css-v7ffx"
-    >
-      <div
-        class="css-8r3cqf"
-      >
-        <div
-          class="css-1b10o6b"
-          data-testid="banner"
-        />
-        <div
-          class="css-xalvt4"
-          data-testid="banner"
-        />
-        <div
-          class="css-1pvl6cc"
-          data-testid="banner"
-        />
-      </div>
-      <div
-        class="css-8r3cqf"
-      >
-        <div
-          class="css-8rf582"
-          data-testid="banner"
-        />
-        <div
-          class="css-1b10o6b"
-          data-testid="banner"
-        />
-      </div>
-    </div>
+      class="css-1vh095t"
+    />
   </div>
   <button
     class="css-wg5tg3"
