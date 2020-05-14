@@ -4,6 +4,7 @@ exports[`AddGameView.tsx renders correctly 1`] = `
 <div>
   <div
     class="css-1jenwj8"
+    data-testid="page-title"
   >
     <h1
       class="css-g7rarf"
@@ -79,7 +80,7 @@ exports[`AddGameView.tsx renders correctly 1`] = `
         
       </section>
       <button
-        class="css-1oz2fdc"
+        class="css-udvp6c"
         data-testid="submit-form"
         type="submit"
       >

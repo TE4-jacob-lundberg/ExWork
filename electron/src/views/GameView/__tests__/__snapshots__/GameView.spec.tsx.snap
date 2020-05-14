@@ -3,7 +3,54 @@
 exports[`GameView.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-7vcppj"
-  />
+    class="css-1bxr3a5"
+  >
+    <div
+      class="css-1jenwj8"
+      data-testid="page-title"
+    >
+      <h1
+        class="css-g7rarf"
+      >
+        testTitle
+      </h1>
+    </div>
+    <div
+      class="css-1xttfd9"
+    />
+    <div
+      class="css-7p5upc"
+    >
+      <button
+        class="css-4qsgvb"
+      >
+        testWiki
+      </button>
+    </div>
+    <section
+      class="css-1lzwb5o"
+    >
+      <button
+        class="css-y6w5kk"
+        data-testid="add-link"
+      >
+        <i
+          class="material-icons"
+        >
+          add
+        </i>
+      </button>
+      <button
+        class="css-5oo53r"
+        disabled=""
+      >
+        <i
+          class="material-icons"
+        >
+          create_new_folder
+        </i>
+      </button>
+    </section>
+  </div>
 </div>
 `;

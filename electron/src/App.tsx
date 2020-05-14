@@ -29,7 +29,7 @@ const App: React.FC<Props> = function () {
     });
   }, [db]);
 
-  const AppContainerStyled = Styled.div`
+  const AppContainerStyled = Styled.main`
     height: 100%;
     width: 100%;
     margin: 0;

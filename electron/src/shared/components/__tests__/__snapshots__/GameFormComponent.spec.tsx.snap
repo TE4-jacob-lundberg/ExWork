@@ -70,7 +70,7 @@ exports[`GameFormComponent.tsx renders correctly 1`] = `
         
       </section>
       <button
-        class="css-1oz2fdc"
+        class="css-udvp6c"
         data-testid="submit-form"
         type="submit"
       >

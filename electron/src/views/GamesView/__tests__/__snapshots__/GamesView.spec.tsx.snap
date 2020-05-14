@@ -3,7 +3,7 @@
 exports[`GamesView.tsx renders correctly 1`] = `
 <div>
   <button
-    class="css-15orcq3"
+    class="css-h3yl58"
     disabled=""
   >
     <i
@@ -13,14 +13,14 @@ exports[`GamesView.tsx renders correctly 1`] = `
     </i>
   </button>
   <div
-    class="css-1755h8c"
+    class="css-1odlc5a"
   >
     <div
       class="css-1vh095t"
     />
   </div>
   <button
-    class="css-wg5tg3"
+    class="css-5lh5f2"
   >
     <i
       class="material-icons"
@@ -29,7 +29,7 @@ exports[`GamesView.tsx renders correctly 1`] = `
     </i>
   </button>
   <button
-    class="css-1bs24ov"
+    class="css-43aran"
     title="Add your own game"
   >
     <i

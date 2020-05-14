@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Styled from '@emotion/styled';
 import { SerializedStyles } from '@emotion/core';
 
 interface Props {
-  children: any;   // eslint-disable-line @typescript-eslint/no-explicit-any
-  onClick?: () => void;
+  children: ReactNode;
+  onClick: () => void;
   styling?: SerializedStyles;
   iconSize?: string;
   background?: string;
@@ -25,11 +25,12 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
     align-items: center;
     cursor: default;
     border-radius: 5px;
+    width: fit-content;
     ${props.disabled && 'filter: brightness(50%);'}
     ${props.styling && props.styling.styles}
 
     ${props.disabled || `&:hover {
-      box-shadow: 0px 0px 5px 2px rgba(255,255,255,1);
+      background: #555;
     }`}
 
     &:active {

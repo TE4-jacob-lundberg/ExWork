@@ -18,7 +18,7 @@ import ButtonComponent from '../../shared/components/ButtonComponent';
 const ipcRenderer = electron.ipcRenderer;
 
 const ContainerStyled = Styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   position: relative;
   display: flex;
@@ -53,6 +53,7 @@ const GameTrioContainerStyled = Styled.div`
 const buttonStyling = css`
   position: absolute;
   z-index: 999;
+  bottom: 50%;
 `;
 
 interface Props {}

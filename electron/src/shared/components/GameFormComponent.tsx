@@ -157,6 +157,7 @@ const GameFormComponent: React.FC<Props> = function (props: Props) {
           </SectionStyled>
 
           <ButtonComponent 
+            onClick={(): string => ''}
             type="submit"
             background="#555"
             styling={css`

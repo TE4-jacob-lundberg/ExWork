@@ -22,7 +22,6 @@ const AppRouter: React.FC<Props> = function () {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
     position: relative;
   `;
 
@@ -33,7 +32,7 @@ const AppRouter: React.FC<Props> = function () {
       {history.location.pathname !== routes.games && 
       <ButtonComponent 
         onClick={(): void => history.goBack()} 
-        iconSize="36px"
+        iconSize="48px"
         styling={css`
           position: absolute;
           top: 0;

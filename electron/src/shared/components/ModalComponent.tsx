@@ -5,7 +5,7 @@ import { css, jsx, keyframes } from '@emotion/core'; // eslint-disable-line @typ
 /* @jsx jsx */
 
 const containerKeyframes = keyframes`
-  0% {align-items: flex-end;}
+  0% {top: 100%}
 `; 
 
 type ActionProps = {
@@ -19,8 +19,9 @@ interface Props {
   cancelAble?: boolean;
   cancelLabel?: string;
   onCancel?: () => void;
+  noActions?: boolean;
   continueLabel?: string; 
-  onContinue: () => void;
+  onContinue?: () => void;
 }
 
 const ModalComponent: React.FC<Props> = function (props: Props) { 
@@ -32,11 +33,12 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
     justify-content: center;
     background: #333;
     z-index: 999;
+    top: calc(calc(70vh - 500px)/2);
     height: 500px;
     width: 500px;
     padding-bottom: 8px;
     border: solid 1px #444;
-    animation: ${containerKeyframes} 5s;
+    animation: ${containerKeyframes} 0.5s ease-out;
   `;
 
   const TitleStyled = Styled.h1`
@@ -93,22 +95,23 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
         close
       </i>
       <BodyStyled>{props.children}</BodyStyled>
-      <ActionsContainerStyled>
-        {props.cancelAble && <ActionStyled 
-          onClick={(): void => props.onCancel && props.onCancel()}
-          data-testid="cancel-modal"
-          background="red"
-        >
-          {props.cancelLabel || 'Cancel'}
-        </ActionStyled>}
-        <ActionStyled 
-          onClick={(): void => props.onContinue()}
-          data-testid="continue-modal"
-          background="green"
-        >
-          {props.continueLabel || 'Continue'}
-        </ActionStyled>
-      </ActionsContainerStyled>
+      {props.noActions ||
+        <ActionsContainerStyled>
+          {props.cancelAble && <ActionStyled 
+            onClick={(): void => props.onCancel && props.onCancel()}
+            data-testid="cancel-modal"
+            background="red"
+          >
+            {props.cancelLabel || 'Cancel'}
+          </ActionStyled>}
+          <ActionStyled 
+            onClick={(): void => props.onContinue && props.onContinue()}
+            data-testid="continue-modal"
+            background="green"
+          >
+            {props.continueLabel || 'Continue'}
+          </ActionStyled>
+        </ActionsContainerStyled>}
     </ContainerStyled>
   );
 };

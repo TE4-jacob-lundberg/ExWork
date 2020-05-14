@@ -24,7 +24,7 @@ const PageTitleComponent: React.FC<Props> = function (props: Props) {
   `;
 
   return (
-    <ContainerStyled>
+    <ContainerStyled data-testid="page-title">
       <TitleStyled>{props.title}</TitleStyled>
     </ContainerStyled>
   );

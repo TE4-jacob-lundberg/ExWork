@@ -2,14 +2,10 @@
 
 exports[`LinkComponent.tsx renders as expected 1`] = `
 <div>
-  <div
-    class="css-1wp3ned"
+  <button
+    class="css-fuk8rw"
   >
-    <button
-      class="css-ezlaf4"
-    >
-      test
-    </button>
-  </div>
+    test
+  </button>
 </div>
 `;
