@@ -2,15 +2,13 @@ import React, { ReactNode } from 'react';
 import Styled from '@emotion/styled';
 import { css, jsx, keyframes } from '@emotion/core'; // eslint-disable-line @typescript-eslint/no-unused-vars
 
+import ButtonComponent from '../components/ButtonComponent';
+
 /* @jsx jsx */
 
 const containerKeyframes = keyframes`
   0% {top: 100%}
 `; 
-
-type ActionProps = {
-  background: string;
-}
 
 interface Props {
   title: string;
@@ -56,7 +54,6 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
     width: 90%;
     margin-top: 16px;
     margin: auto;
-    font-size: 1.5rem;
   `;
 
   const ActionsContainerStyled = Styled.div`
@@ -67,16 +64,6 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
     flex-direction: ${!props.cancelAble ? 'row-reverse' : 'row'};
     padding: 0 16px;
     align-items: center;
-  `;
-
-  const ActionStyled = Styled.button<ActionProps>`
-    height: 80%;
-    width: fit-content;
-    padding: 0 8px;
-    border: none;
-    color: #FFF;
-    font-size: 1.25rem;
-    background: ${(props): string => props.background}
   `;
 
   return (
@@ -97,20 +84,20 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
       <BodyStyled>{props.children}</BodyStyled>
       {props.noActions ||
         <ActionsContainerStyled>
-          {props.cancelAble && <ActionStyled 
+          {props.cancelAble && <ButtonComponent 
             onClick={(): void => props.onCancel && props.onCancel()}
             data-testid="cancel-modal"
             background="red"
           >
             {props.cancelLabel || 'Cancel'}
-          </ActionStyled>}
-          <ActionStyled 
+          </ButtonComponent>}
+          <ButtonComponent 
             onClick={(): void => props.onContinue && props.onContinue()}
             data-testid="continue-modal"
             background="green"
           >
             {props.continueLabel || 'Continue'}
-          </ActionStyled>
+          </ButtonComponent>
         </ActionsContainerStyled>}
     </ContainerStyled>
   );

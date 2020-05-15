@@ -2,10 +2,19 @@
 
 exports[`LinkComponent.tsx renders as expected 1`] = `
 <div>
-  <button
-    class="css-fuk8rw"
+  <div
+    class="css-cfdpzz"
   >
-    test
-  </button>
+    <i
+      class="material-icons css-hxc41y"
+    >
+      remove_circle
+    </i>
+    <button
+      class="css-1bcnrgi"
+    >
+      test
+    </button>
+  </div>
 </div>
 `;

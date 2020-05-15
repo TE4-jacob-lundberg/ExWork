@@ -20,13 +20,13 @@ const AddGameView: React.FC<Props> = function () {
           db.add({
             ...values, 
             image: {
-              url: values.image!, 
+              url: values.image, 
               bannerPos: { 
                 x: values.xAxis.toString(), 
                 y: values.yAxis.toString(),
               },
             },
-          }).then(resp => history.replace(routes.gameLinks.replace(':gameID', resp.toString())));
+          }).then(resp => history.replace(routes.showGame.replace(':gameID', resp.toString())));
         }}
       />
     </>

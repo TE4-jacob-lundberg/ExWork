@@ -5,9 +5,10 @@ import { useIndexedDB } from 'react-indexed-db';
 import { css } from '@emotion/core';
 import { Formik, Field, Form } from 'formik';
 
+import { IGame, ILink } from '../../shared/helpers/Types';
+import { EventBus } from '../../shared/helpers/EventBus';
 import LinkCollectionComponent from './components/LinkCollectionComponent';
 import PageTitleComponent from '../../shared/components/PageTitleComponent';
-import { IGame, ILink } from '../../shared/helpers/Types';
 import ButtonComponent from '../../shared/components/ButtonComponent';
 import ModalComponent from '../../shared/components/ModalComponent';
 
@@ -48,15 +49,23 @@ const GameView: React.FC<Props> = function () {
     db.getByID(params.gameID).then(resp => setGameData(resp));
   }, [db, params.gameID, gameData]);
 
-  const BackgroundStyled = Styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    filter: grayscale(50%);
-    background: url(${gameData && gameData.image!.url }) 50% ${gameData ? gameData.image!.bannerPos.y : '0'} no-repeat;
-    background-size: cover;
-  `;
+  useEffect(() => {
+    if (!gameData) return;
+    EventBus.subscribe('delete-link', (link: ILink) => {
+      const oldLinks: ILink[] = JSON.parse(JSON.stringify(gameData.links));
+      const deletedLink = oldLinks.find((oldLink) => {return oldLink.url === link.url && oldLink.label === link.label; });
+      if (!deletedLink) return;
+      
+      oldLinks.splice(oldLinks.indexOf(deletedLink), 1);
+      const newGameData = {
+        ...gameData,
+        links: oldLinks,
+      };
+      db.update(newGameData)
+        .then(() => setGameData(newGameData))
+        .catch(err => console.error(err));
+    });
+  }, [gameData, db]);
 
   function handleLinkSubmit(rawValues: IFormValues): void {
     if (!gameData) return;
@@ -77,6 +86,16 @@ const GameView: React.FC<Props> = function () {
       })
       .catch(err => console.error(err)); 
   }
+
+  const BackgroundStyled = Styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: grayscale(50%);
+    background: url(${gameData && gameData.image!.url }) 50% ${gameData ? gameData.image!.bannerPos.y : '0'} no-repeat;
+    background-size: cover;
+  `;
 
   const ActionContainerStyled = Styled.section`
     width: 200px;
@@ -112,9 +131,7 @@ const GameView: React.FC<Props> = function () {
     }
   `;
 
-  const LabelStyled = Styled.label`
-    font-size: 1rem;
-  `;
+  const LabelStyled = Styled.label``;
 
   const FormButton = (
     <ButtonComponent

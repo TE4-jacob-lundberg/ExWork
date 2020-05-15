@@ -1,5 +1,6 @@
 export const routes = {
   games: '/games',
-  gameLinks: '/games/:gameID',
-  addGame: '/games/add',
+  showGame: '/games/:gameID',
+  addGame: '/games/new',
+  editGame: '/games/:gameID/edit',
 };

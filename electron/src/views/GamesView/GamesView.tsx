@@ -12,6 +12,7 @@ import { IGame } from '../../shared/helpers/Types';
 import GameBannerComponent from './components/GameBannerComponent';
 import ModalComponent from '../../shared/components/ModalComponent';
 import ButtonComponent from '../../shared/components/ButtonComponent';
+import PageIndicatorComponent from './components/PageIndicatorComponent';
 
 /* @jsx jsx */
 
@@ -59,7 +60,7 @@ const buttonStyling = css`
 interface Props {}
 
 const GamesView: React.FC<Props> = function () {
-  const [runningGame, setRunningGame] = useState<IGame>({title: '', id: '', abbreviation: '', links: [], fileNames: []});
+  const [runningGame, setRunningGame] = useState<IGame>();
   const [showModal, setShowModal] = useState(false);
   const [games, setGames] = useState<IGame[]>([]);
   const [page, setPage] = useState(0);
@@ -95,9 +96,9 @@ const GamesView: React.FC<Props> = function () {
     };
   }, [handleShowingWindows]);
 
-  // Toggle state which prevents modal form appearing again
+  // Toggle state which prevents modal from appearing again
   useEffect(() => {
-    if (!runningGame.id || localStorage.getItem('alreadyNotifiedOfRunningGame') === runningGame.id) return;
+    if (!runningGame || localStorage.getItem('alreadyNotifiedOfRunningGame') === runningGame.id) return;
     localStorage.setItem('alreadyNotifiedOfRunningGame', runningGame.id);
     setShowModal(true);
   }, [runningGame]);
@@ -149,6 +150,11 @@ const GamesView: React.FC<Props> = function () {
           {GameBanners()}
         </BannerContainerStyled>
       </ContainerStyled>
+      <PageIndicatorComponent 
+        totalPages={Math.ceil(games.length / 3)}
+        currentPage={page}
+        onSelect={(pageNumber: number): void => setPage(pageNumber)}
+      />
       <ButtonComponent
         onClick={handleNextPage}
         iconSize="48px"
@@ -181,10 +187,10 @@ const GamesView: React.FC<Props> = function () {
         onClose={(): void => setShowModal(false)}
         cancelAble
         onCancel={(): void => setShowModal(false)}
-        onContinue={(): void => history.push(routes.gameLinks.replace(':gameID', runningGame.id))}
+        onContinue={(): void => history.push(routes.showGame.replace(':gameID', runningGame!.id))}
       >
         <p>I recognize</p>
-        <h3>{runningGame.title}</h3>
+        <h3>{runningGame && runningGame.title}</h3>
         <p>is running in the background. Do you want to see its links?</p>
       </ModalComponent>}
     </React.Fragment>

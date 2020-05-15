@@ -26,11 +26,11 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
     cursor: default;
     border-radius: 5px;
     width: fit-content;
+    font-size: 1.25rem;
     ${props.disabled && 'filter: brightness(50%);'}
-    ${props.styling && props.styling.styles}
 
     ${props.disabled || `&:hover {
-      background: #555;
+      background: #666;
     }`}
 
     &:active {
@@ -44,6 +44,8 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
     & i {
       font-size: ${props.iconSize};
     }
+
+    ${props.styling && props.styling.styles}
   `;
   
 

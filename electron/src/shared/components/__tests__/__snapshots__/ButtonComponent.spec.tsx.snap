@@ -3,7 +3,7 @@
 exports[`ButtonComponent.tsx renders correctly 1`] = `
 <div>
   <button
-    class="css-i52mbt"
+    class="css-1b23wax"
   >
     Click me
   </button>

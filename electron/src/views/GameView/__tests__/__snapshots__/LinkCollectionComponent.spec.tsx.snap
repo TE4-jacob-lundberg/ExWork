@@ -5,16 +5,34 @@ exports[`LinkCollectionComponent.tsx renders correctly 1`] = `
   <div
     class="css-7p5upc"
   >
-    <button
-      class="css-4qsgvb"
+    <div
+      class="css-cfdpzz"
     >
-      link1
-    </button>
-    <button
-      class="css-arr1oq"
+      <i
+        class="material-icons css-hxc41y"
+      >
+        remove_circle
+      </i>
+      <button
+        class="css-hz4xjw"
+      >
+        link1
+      </button>
+    </div>
+    <div
+      class="css-cfdpzz"
     >
-      link2
-    </button>
+      <i
+        class="material-icons css-hxc41y"
+      >
+        remove_circle
+      </i>
+      <button
+        class="css-1o03l35"
+      >
+        link2
+      </button>
+    </div>
   </div>
 </div>
 `;

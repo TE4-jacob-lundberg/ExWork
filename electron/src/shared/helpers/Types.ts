@@ -1,6 +1,7 @@
 export interface ILink {
   url: string;
   label: string;
+  type: string;
 }
 
 export interface IGameFormFields {
@@ -9,7 +10,6 @@ export interface IGameFormFields {
   image: string; 
   xAxis: string;
   yAxis: string;
-  links: ILink[];
   fileNames: string[];
 }
 
@@ -19,7 +19,7 @@ export interface IGame {
   id: string;
   title: string;
   abbreviation: string | null;
-  image?: IGameImage;
+  image: IGameImage;
   links: ILink[];
   fileNames: string[];
 }

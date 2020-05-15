@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageIndicatorComponent.tsx renders correctly 1`] = `
+<div>
+  <div
+    class="css-i1e77v"
+  >
+    <div
+      class="css-ld341p"
+      data-testid="indicator"
+    />
+    <div
+      class="css-1sr9bqy"
+      data-testid="indicator"
+    />
+  </div>
+</div>
+`;
+
+exports[`PageIndicatorComponent.tsx updates whenever the page changes 1`] = `
+<div>
+  <div
+    class="css-i1e77v"
+  >
+    <div
+      class="css-ld341p"
+      data-testid="indicator"
+    />
+    <div
+      class="css-1sr9bqy"
+      data-testid="indicator"
+    />
+  </div>
+</div>
+`;
+
+exports[`PageIndicatorComponent.tsx updates whenever the page changes 2`] = `
+<div>
+  <div
+    class="css-i1e77v"
+  >
+    <div
+      class="css-1sr9bqy"
+      data-testid="indicator"
+    />
+    <div
+      class="css-ld341p"
+      data-testid="indicator"
+    />
+  </div>
+</div>
+`;

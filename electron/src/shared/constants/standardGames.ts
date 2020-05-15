@@ -13,10 +13,10 @@ export const standardGames: IGame[] = [
       },
     },
     links: [
-      { label: 'Wiki', url: 'https://counterstrike.fandom.com/wiki/Counter-Strike:_Global_Offensive'},
-      { label: 'CS:GO Stash', url: 'http://csgostash.com'},
-      { label: 'Steam Guide SprayPatterns', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=378325692'},
-      { label: 'Steam Market', url: 'https://steamcommunity.com/market/search?l=swedish&appid=730'},
+      { type: 'link', label: 'Wiki', url: 'https://counterstrike.fandom.com/wiki/Counter-Strike:_Global_Offensive'},
+      { type: 'link', label: 'CS:GO Stash', url: 'http://csgostash.com'},
+      { type: 'link', label: 'Steam Guide SprayPatterns', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=378325692'},
+      { type: 'link', label: 'Steam Market', url: 'https://steamcommunity.com/market/search?l=swedish&appid=730'},
     ],
     fileNames: ['csgo.exe', 'csgo.app', 'Visual Studio Code.app'],
   },
@@ -32,7 +32,7 @@ export const standardGames: IGame[] = [
       },
     },
     links: [
-      { label: 'Wiki', url: 'https://valorant.fandom.com/wiki/Valorant_Wiki'},
+      { type: 'link', label: 'Wiki', url: 'https://valorant.fandom.com/wiki/Valorant_Wiki'},
     ],
     fileNames: ['VALORANT.exe', 'VALORANT.app', 'Terminal.app'],
   },
@@ -48,7 +48,7 @@ export const standardGames: IGame[] = [
       },
     },
     links: [
-      { label: 'Wiki', url: 'https://callofduty.fandom.com/wiki/Portal:Call_of_Duty:_Modern_Warfare_(2019)'},
+      { type: 'link', label: 'Wiki', url: 'https://callofduty.fandom.com/wiki/Portal:Call_of_Duty:_Modern_Warfare_(2019)'},
     ],
     fileNames: ['ModernWarfare.exe', 'ModernWarfare.app'],
   },
@@ -64,7 +64,7 @@ export const standardGames: IGame[] = [
       },
     },
     links: [
-      { label: 'Wiki', url: 'https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki' },
+      { type: 'link', label: 'Wiki', url: 'https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki' },
     ],
     fileNames: ['.exe', '.app'],
   },

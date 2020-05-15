@@ -6,7 +6,7 @@ exports[`GameView.tsx renders correctly 1`] = `
     class="css-1bxr3a5"
   >
     <div
-      class="css-1jenwj8"
+      class="css-vnxadl"
       data-testid="page-title"
     >
       <h1
@@ -21,17 +21,26 @@ exports[`GameView.tsx renders correctly 1`] = `
     <div
       class="css-7p5upc"
     >
-      <button
-        class="css-4qsgvb"
+      <div
+        class="css-cfdpzz"
       >
-        testWiki
-      </button>
+        <i
+          class="material-icons css-hxc41y"
+        >
+          remove_circle
+        </i>
+        <button
+          class="css-hz4xjw"
+        >
+          testWiki
+        </button>
+      </div>
     </div>
     <section
       class="css-1lzwb5o"
     >
       <button
-        class="css-y6w5kk"
+        class="css-1klzbop"
         data-testid="add-link"
       >
         <i
@@ -41,7 +50,7 @@ exports[`GameView.tsx renders correctly 1`] = `
         </i>
       </button>
       <button
-        class="css-5oo53r"
+        class="css-19mf0q9"
         disabled=""
       >
         <i

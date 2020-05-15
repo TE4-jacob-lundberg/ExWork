@@ -14,6 +14,7 @@ const PageTitleComponent: React.FC<Props> = function (props: Props) {
     text-align: center;
     display: flex;
     justify-content: center;
+    z-index: 9;
   `;
     
   const TitleStyled = Styled.h1`

@@ -17,7 +17,7 @@ exports[`ModalComponent.tsx renders correctly 1`] = `
       close
     </i>
     <div
-      class="css-l4ddcq"
+      class="css-8ezbff"
     >
       text
     </div>
@@ -25,13 +25,13 @@ exports[`ModalComponent.tsx renders correctly 1`] = `
       class="css-3to2p8"
     >
       <button
-        class="css-1mir8w9"
+        class="css-1kyceuw"
         data-testid="cancel-modal"
       >
         Cancel
       </button>
       <button
-        class="css-a4emjt"
+        class="css-1w5u29q"
         data-testid="continue-modal"
       >
         Continue

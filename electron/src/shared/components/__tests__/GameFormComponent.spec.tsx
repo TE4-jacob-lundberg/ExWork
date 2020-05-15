@@ -18,14 +18,14 @@ describe('GameFormComponent.tsx', () => {
   });
 
   it.skip('submits with the correct values', () => {
-    const { getByTestId } = factory(testComponent);
+    const { getByText, getByLabelText} = factory(testComponent);
 
-    fireEvent.change(getByTestId('game-title'), { target: { value: 'test-title' }});
-    fireEvent.change(getByTestId('game-abbr'), { target: { value: 'test-abbr' }});
+    fireEvent.change(getByLabelText('Title*'), { target: { value: 'test-title' }});
+    fireEvent.change(getByLabelText('Abbreviation'), { target: { value: 'test-abbr' }});
     
-    fireEvent.click(getByTestId('submit-form'));
+    fireEvent.click(getByText('Save'));
 
-    waitForElement(() => getByTestId('game-abbr')).then(() => {
+    waitForElement(() => getByLabelText('Abbreviation')).then(() => {
       expect(mockedSubmit).toHaveBeenCalledWith({
         id: 'test', title: 'test-title', abbreviation: 'test-abbr', image: '', xAxis: '50', yAxis: '0', links: [], fileNames: [],
       });

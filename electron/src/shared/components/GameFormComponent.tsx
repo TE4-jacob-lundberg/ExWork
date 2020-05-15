@@ -92,15 +92,35 @@ const ErrorMessageStyled = Styled.li`
   margin: 12px 0;
 `;
 
+type ActionsContainerProps = {
+  deletable: boolean;
+}
+
+const ActionsContainer = Styled.div<ActionsContainerProps>`
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: ${(props): string => props.deletable ? 'row' : 'row-reverse'};
+  justify-content: space-between;
+  width: 35vw;
+
+  & > button {
+    margin: 0 4px;
+  }
+`;
+
 interface Props {
   initialValues?: IGameFormFields;
+  deletable?: boolean;
   onSubmit: (values: IGameFormFields) => void;
+  onDelete?: () => void;
 }
 
 const GameFormComponent: React.FC<Props> = function (props: Props) {
   const [showModal, setShowModal] = useState(false);
   const formik = useFormik({
-    initialValues: {title: '', abbreviation: '', image: '', xAxis: '50', yAxis: '0', links: [], fileNames: [localStorage.getItem('latestGameFile')!]},
+    initialValues: props.initialValues || {title: '', abbreviation: '', image: '', xAxis: '50', yAxis: '0', fileNames: [localStorage.getItem('latestGameFile')!]},
     onSubmit: (values): void => {
       props.onSubmit(values);
     },
@@ -134,11 +154,11 @@ const GameFormComponent: React.FC<Props> = function (props: Props) {
         <form onSubmit={formik.handleSubmit}>
           <SectionHeaderStyled>Game Information</SectionHeaderStyled>
           <SectionStyled>
-            <InputLabelStyled error={!!formik.errors.title}>Title*</InputLabelStyled>
-            <InputStyled type="text" {...formik.getFieldProps('title')} data-testid="game-title" />          
-            <InputLabelStyled>Abbreviation</InputLabelStyled>
-            <InputStyled type="text" {...formik.getFieldProps('abbreviation')} data-testid="game-abbr"/>
-            <InputLabelStyled>Game file (*.exe, *.app)</InputLabelStyled>
+            <InputLabelStyled htmlFor="title" error={!!formik.errors.title}>Title*</InputLabelStyled>
+            <InputStyled type="text" {...formik.getFieldProps('title')} id="title" />          
+            <InputLabelStyled htmlFor="abbr">Abbreviation</InputLabelStyled>
+            <InputStyled type="text" {...formik.getFieldProps('abbreviation')} id="abbr" />
+            <InputLabelStyled>Game files (*.exe, *.app)</InputLabelStyled>
             <InputStyled type="text" {...formik.getFieldProps('fileNames')} />
           </SectionStyled>
           <SectionHeaderStyled>Image Settings</SectionHeaderStyled>
@@ -155,28 +175,29 @@ const GameFormComponent: React.FC<Props> = function (props: Props) {
                 <RangeInputStyled type="range" min="0" max="100" {...formik.getFieldProps('yAxis')} />
               </>)}
           </SectionStyled>
-
-          <ButtonComponent 
-            onClick={(): string => ''}
-            type="submit"
-            background="#555"
-            styling={css`
-              position: absolute;
-              bottom: 12px;
-              left: 12px;
-              font-size: 1.5rem;
-              
+          <ActionsContainer deletable={!!props.deletable}>
+            {props.deletable && <ButtonComponent
+              onClick={(): void => props.onDelete && props.onDelete()}
+              background="red"
+            >
+              Delete 
+              <i className="material-icons">delete</i>
+            </ButtonComponent>}
+            <ButtonComponent 
+              onClick={(): string => ''}
+              type="submit"
+              background="green"
+              styling={css`            
               & > i {
                 margin-left: 8px;
               }
-            `}
-            data-testid="submit-form"
-          >
-            Save
-            <i className="material-icons">
-              save
-            </i>
-          </ButtonComponent>
+              `}
+              data-testid="submit-form"
+            >
+              Save
+              <i className="material-icons">save</i>
+            </ButtonComponent>
+          </ActionsContainer>
         </form>
         <ImageStyled 
           image={formik.values.image} 

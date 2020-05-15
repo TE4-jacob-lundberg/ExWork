@@ -7,6 +7,7 @@ import { routes } from './shared/constants/routes';
 import GamesView from './views/GamesView';
 import GameView from './views/GameView';
 import AddGameView from './views/AddGameView';
+import EditGameView from './views/EditGameView';
 import ButtonComponent from './shared/components/ButtonComponent';
 
 /* @jsx jsx */
@@ -46,7 +47,8 @@ const AppRouter: React.FC<Props> = function () {
       <Switch>
         <Route path={routes.games} component={GamesView} exact />
         <Route path={routes.addGame} component={AddGameView} exact />
-        <Route path={routes.gameLinks} component={GameView} />
+        <Route path={routes.editGame} component={EditGameView} />
+        <Route path={routes.showGame} component={GameView} />
       </Switch>
     </ContainerStyled>
   );
