@@ -110,7 +110,7 @@ exports[`EditGameView.tsx renders correctly 1`] = `
         class="css-468wco"
       >
         <button
-          class="css-1kyceuw"
+          class="css-34a7o7"
         >
           Delete
           <i
@@ -120,7 +120,7 @@ exports[`EditGameView.tsx renders correctly 1`] = `
           </i>
         </button>
         <button
-          class="css-ucx151"
+          class="css-1ctwf7v"
           data-testid="submit-form"
           type="submit"
         >

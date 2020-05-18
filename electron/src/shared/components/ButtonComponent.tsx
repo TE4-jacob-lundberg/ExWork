@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Styled from '@emotion/styled';
 import { SerializedStyles } from '@emotion/core';
+import ModalComponent from './ModalComponent';
 
 interface Props {
   children: ReactNode;
@@ -11,10 +12,17 @@ interface Props {
   disabled?: boolean;
   title?: string;
   type?: 'button' | 'reset' | 'submit' | undefined;
+  confirm?: boolean;
   'data-testid'?: string;
 }
 
 const ButtonComponent: React.FC<Props> = function (props: Props) {
+  const [showPrompt, setShowPrompt] = useState(false);
+
+  function handleClick(): void {
+    props.confirm ? setShowPrompt(true) : props.onClick();
+  }
+
   const ButtonStyled = Styled.button`
     border: none;
     background: ${props.background || '#333'};
@@ -27,6 +35,7 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
     border-radius: 5px;
     width: fit-content;
     font-size: 1.25rem;
+    cursor: pointer;
     ${props.disabled && 'filter: brightness(50%);'}
 
     ${props.disabled || `&:hover {
@@ -43,6 +52,7 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
 
     & i {
       font-size: ${props.iconSize};
+      user-select: none;
     }
 
     ${props.styling && props.styling.styles}
@@ -50,15 +60,25 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
   
 
   return (
-    <ButtonStyled 
-      type={props.type}
-      onClick={props.onClick} 
-      disabled={props.disabled} 
-      title={props.title}
-      data-testid={props['data-testid']}
-    >
-      {props.children}
-    </ButtonStyled>
+    <>
+      <ButtonStyled 
+        type={props.type}
+        onClick={handleClick} 
+        disabled={props.disabled} 
+        title={props.title}
+        data-testid={props['data-testid']}
+      >
+        {props.children}
+      </ButtonStyled>
+      {showPrompt && <ModalComponent
+        title="Are you sure?"
+        onClose={(): void => setShowPrompt(false)}
+        onContinue={(): void => {props.onClick(); setShowPrompt(false); }}
+        cancelAble
+      >
+        
+      </ModalComponent>}
+    </>
   );
 };
 

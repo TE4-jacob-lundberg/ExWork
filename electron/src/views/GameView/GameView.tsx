@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ReactNode } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Styled from '@emotion/styled';
 import { useIndexedDB } from 'react-indexed-db';
 import { css } from '@emotion/core';
@@ -7,6 +7,7 @@ import { Formik, Field, Form } from 'formik';
 
 import { IGame, ILink } from '../../shared/helpers/Types';
 import { EventBus } from '../../shared/helpers/EventBus';
+import { routes } from '../../shared/constants/routes';
 import LinkCollectionComponent from './components/LinkCollectionComponent';
 import PageTitleComponent from '../../shared/components/PageTitleComponent';
 import ButtonComponent from '../../shared/components/ButtonComponent';
@@ -40,14 +41,17 @@ interface IFormValues {
 
 const GameView: React.FC<Props> = function () {
   const params = useParams<Params>();
+  const history = useHistory();
   const [gameData, setGameData] = useState<IGame>();
   const [modalContent, setModalContent] = useState<IModalContent>();
   const db = useIndexedDB('games');
 
   useEffect(() => {
     if (gameData) return;
-    db.getByID(params.gameID).then(resp => setGameData(resp));
-  }, [db, params.gameID, gameData]);
+    db.getByID(params.gameID)
+      .then(resp => resp ? setGameData(resp) : history.push(routes.games))
+      .catch((err) => console.error(err));
+  }, [db, params.gameID, gameData, history]);
 
   useEffect(() => {
     if (!gameData) return;

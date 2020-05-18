@@ -85,7 +85,7 @@ exports[`AddGameView.tsx renders correctly 1`] = `
         class="css-11r1swr"
       >
         <button
-          class="css-ucx151"
+          class="css-1ctwf7v"
           data-testid="submit-form"
           type="submit"
         >

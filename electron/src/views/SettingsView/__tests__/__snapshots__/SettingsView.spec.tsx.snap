@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsView.tsx renders correctly 1`] = `
+<div>
+  <div
+    class="css-vnxadl"
+    data-testid="page-title"
+  >
+    <h1
+      class="css-g7rarf"
+    >
+      Settings
+    </h1>
+  </div>
+  <div
+    class="css-nnf5p9"
+  >
+    <div
+      class="css-fehiio"
+    >
+      <div
+        class="css-168old1"
+      >
+        <h1
+          class="css-k8am81"
+        >
+          Reset your games to when first opened
+        </h1>
+        <button
+          class="css-34a7o7"
+        >
+          RESET GAMES
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

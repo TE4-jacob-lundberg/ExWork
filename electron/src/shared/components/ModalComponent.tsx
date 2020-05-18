@@ -31,8 +31,8 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
     justify-content: center;
     background: #333;
     z-index: 999;
-    top: calc(calc(70vh - 500px)/2);
-    height: 500px;
+    top: calc(calc(70vh - ${props.children ? '500' : '200'}px)/2);
+    height: ${props.children ? '500' : '200'}px;
     width: 500px;
     padding-bottom: 8px;
     border: solid 1px #444;
@@ -69,18 +69,23 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
   return (
     <ContainerStyled>
       <TitleStyled>{props.title}</TitleStyled>
-      <i 
-        css={css`
+      <ButtonComponent 
+        onClick={(): void => props.onClose()}
+        background="none"
+        styling={css`
           position: absolute;
           top: 8px;
           right: 8px;
-        `} 
-        className="material-icons"
-        data-testid="close-modal"
-        onClick={(): void => props.onClose()}
+          padding: 0;
+        `}
       >
-        close
-      </i>
+        <i  
+          className="material-icons"
+          data-testid="close-modal"
+        >
+          close
+        </i>
+      </ButtonComponent>
       <BodyStyled>{props.children}</BodyStyled>
       {props.noActions ||
         <ActionsContainerStyled>

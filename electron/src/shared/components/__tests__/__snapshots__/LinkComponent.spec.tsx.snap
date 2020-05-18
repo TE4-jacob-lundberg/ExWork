@@ -6,12 +6,12 @@ exports[`LinkComponent.tsx renders as expected 1`] = `
     class="css-cfdpzz"
   >
     <i
-      class="material-icons css-hxc41y"
+      class="material-icons css-dyscyh"
     >
       remove_circle
     </i>
     <button
-      class="css-1bcnrgi"
+      class="css-7kw57i"
     >
       test
     </button>

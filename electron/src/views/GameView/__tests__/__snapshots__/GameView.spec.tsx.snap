@@ -19,18 +19,18 @@ exports[`GameView.tsx renders correctly 1`] = `
       class="css-1xttfd9"
     />
     <div
-      class="css-7p5upc"
+      class="css-ubcm2u"
     >
       <div
         class="css-cfdpzz"
       >
         <i
-          class="material-icons css-hxc41y"
+          class="material-icons css-dyscyh"
         >
           remove_circle
         </i>
         <button
-          class="css-hz4xjw"
+          class="css-uxkr57"
         >
           testWiki
         </button>
@@ -40,7 +40,7 @@ exports[`GameView.tsx renders correctly 1`] = `
       class="css-1lzwb5o"
     >
       <button
-        class="css-1klzbop"
+        class="css-17epmtx"
         data-testid="add-link"
       >
         <i
@@ -50,7 +50,7 @@ exports[`GameView.tsx renders correctly 1`] = `
         </i>
       </button>
       <button
-        class="css-19mf0q9"
+        class="css-equvm"
         disabled=""
       >
         <i

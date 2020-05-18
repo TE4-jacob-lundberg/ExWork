@@ -39,10 +39,10 @@ const DeleteButtonStyled = Styled.i`
   cursor: default;
   user-select: none;
   display: none;
+  cursor: grab;
 
-  &:hover {
-    border-radius: 999px;
-    transform: scale(1.25);
+  &:active {
+    cursor: grabbing;
   }
 `;
 
@@ -53,7 +53,7 @@ const DeleteBarStyled = Styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  animation: ${DeleteBarKeyframes} 2s;
+  animation: ${DeleteBarKeyframes} 1.5s;
 `;
 
 interface Props {

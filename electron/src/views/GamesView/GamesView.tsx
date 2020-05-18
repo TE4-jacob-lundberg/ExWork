@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { css, jsx } from '@emotion/core'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import { css } from '@emotion/core';
 import Styled from '@emotion/styled';
 import { IpcRendererEvent } from 'electron';
 import { Window } from 'node-window-manager';
@@ -13,8 +13,6 @@ import GameBannerComponent from './components/GameBannerComponent';
 import ModalComponent from '../../shared/components/ModalComponent';
 import ButtonComponent from '../../shared/components/ButtonComponent';
 import PageIndicatorComponent from './components/PageIndicatorComponent';
-
-/* @jsx jsx */
 
 const ipcRenderer = electron.ipcRenderer;
 
@@ -67,7 +65,6 @@ const GamesView: React.FC<Props> = function () {
   const db = useIndexedDB('games');
   const history = useHistory();
 
-  // Add standardgames if there are none
   useEffect(() => {
     if (games.length) return;
     db.getAll().then((resp: IGame[]) => {
@@ -122,18 +119,10 @@ const GamesView: React.FC<Props> = function () {
     return acc;
   }
 
-  function handleNextPage(): void {
-    setPage(page + 1);
-  }
-
-  function handlePrevPage(): void {
-    setPage(page - 1);
-  }
-
   return (
     <React.Fragment>
       <ButtonComponent
-        onClick={handlePrevPage}
+        onClick={(): void => setPage(page - 1)}
         iconSize="48px"
         disabled={page === 0}
         styling={css`
@@ -156,7 +145,7 @@ const GamesView: React.FC<Props> = function () {
         onSelect={(pageNumber: number): void => setPage(pageNumber)}
       />
       <ButtonComponent
-        onClick={handleNextPage}
+        onClick={(): void => setPage(page + 1)}
         iconSize="48px"
         disabled={page === Math.ceil(games.length / 3) - 1}
         styling={css`

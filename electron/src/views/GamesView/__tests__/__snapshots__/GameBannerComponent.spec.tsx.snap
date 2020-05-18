@@ -3,12 +3,22 @@
 exports[`GameBannerComponent.tsx redirects to its links on click 1`] = `
 <div>
   <div
-    class="css-chk7sd"
+    class="css-1d2zccn"
     data-testid="banner"
   >
     <div
-      class="css-m3pil1"
-    />
+      class="css-1uckm9l"
+    >
+      <button
+        class="css-1lidn5m"
+      >
+        <i
+          class="material-icons"
+        >
+          edit
+        </i>
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -19,23 +29,43 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-chk7sd"
+        class="css-1d2zccn"
         data-testid="banner"
       >
         <div
-          class="css-m3pil1"
-        />
+          class="css-1uckm9l"
+        >
+          <button
+            class="css-1lidn5m"
+          >
+            <i
+              class="material-icons"
+            >
+              edit
+            </i>
+          </button>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="css-chk7sd"
+      class="css-1d2zccn"
       data-testid="banner"
     >
       <div
-        class="css-m3pil1"
-      />
+        class="css-1uckm9l"
+      >
+        <button
+          class="css-1lidn5m"
+        >
+          <i
+            class="material-icons"
+          >
+            edit
+          </i>
+        </button>
+      </div>
     </div>
   </div>,
   "debug": [Function],

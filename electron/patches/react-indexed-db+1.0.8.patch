@@ -1,0 +1,10 @@
+diff --git a/node_modules/react-indexed-db/lib/indexed-hooks.d.ts b/node_modules/react-indexed-db/lib/indexed-hooks.d.ts
+index 6709944..a3c549c 100644
+--- a/node_modules/react-indexed-db/lib/indexed-hooks.d.ts
++++ b/node_modules/react-indexed-db/lib/indexed-hooks.d.ts
+@@ -35,4 +35,5 @@ export declare function useIndexedDB(objectStore: string): {
+     deleteRecord: (key: Key) => Promise<any>;
+     openCursor: (cursorCallback: (event: Event) => void, keyRange?: IDBKeyRange) => Promise<void>;
+     getByIndex: (indexName: string, key: any) => Promise<any>;
++    clear: () => Promise<any>
+ };

@@ -22,6 +22,14 @@ const ContainerStyled = Styled.div`
   &:hover > div { 
     filter: grayscale(0%);
   }
+
+  & i {
+    display: none;
+  }
+
+  &:hover i {
+    display: initial;
+  }
 `;
 
 interface Props {
@@ -31,7 +39,6 @@ interface Props {
 
 const GameBannerComponent: React.FC<Props> = function (props: Props) {
   const [clicked, setClicked] = useState(false);
-  const [hover, setHover] = useState(false);
   const history = useHistory();
 
   const clickKeyframes = keyframes`
@@ -46,10 +53,6 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
     animation: ${clickKeyframes} 0.5s;
     left: 0;
 
-    & i {
-      user-select: none;
-    }
-
     ${(props): string => props.doTransition ? `
       position: absolute;
       z-index: 999;
@@ -59,8 +62,6 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
   return (
     <ContainerStyled 
       onAnimationEnd={(): void => clicked ? history.push(routes.showGame.replace(':gameID', props.game.id)): undefined}
-      onMouseOver={(): void => setHover(true)}
-      onMouseLeave={(): void => setHover(false)}
       data-testid="banner"
     >
       <ImageStyled 
@@ -70,7 +71,7 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
         doTransition={clicked}
         position={props.position}
       >
-        {hover && <ButtonComponent 
+        <ButtonComponent 
           onClick={(): void => history.push(routes.editGame.replace(':gameID', props.game.id))}
           background="none"
           iconSize="20px"
@@ -85,7 +86,7 @@ const GameBannerComponent: React.FC<Props> = function (props: Props) {
           <i className="material-icons">
             edit
           </i>
-        </ButtonComponent>}
+        </ButtonComponent>
       </ImageStyled>
     </ContainerStyled>
   );

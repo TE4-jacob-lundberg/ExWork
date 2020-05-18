@@ -8,6 +8,7 @@ import GamesView from './views/GamesView';
 import GameView from './views/GameView';
 import AddGameView from './views/AddGameView';
 import EditGameView from './views/EditGameView';
+import SettingsView from './views/SettingsView';
 import ButtonComponent from './shared/components/ButtonComponent';
 
 /* @jsx jsx */
@@ -26,7 +27,7 @@ const AppRouter: React.FC<Props> = function () {
     position: relative;
   `;
 
-  if (history.location.pathname === '/') history.push(routes.games);
+  if (history.location.pathname === '/') history.replace(routes.games);
 
   return (
     <ContainerStyled>
@@ -49,7 +50,21 @@ const AppRouter: React.FC<Props> = function () {
         <Route path={routes.addGame} component={AddGameView} exact />
         <Route path={routes.editGame} component={EditGameView} />
         <Route path={routes.showGame} component={GameView} />
+        <Route path={routes.settings} component={SettingsView} />
       </Switch>
+      {history.location.pathname === routes.settings || <ButtonComponent
+        onClick={(): void => history.push(routes.settings)}
+        iconSize="48px"
+        styling={css`
+          position: absolute;
+          top: 0;
+          right: -100px
+        `}
+      >
+        <i className="material-icons">
+          settings
+        </i>
+      </ButtonComponent>}
     </ContainerStyled>
   );
 };

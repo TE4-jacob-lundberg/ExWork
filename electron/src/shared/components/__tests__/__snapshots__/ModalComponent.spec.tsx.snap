@@ -10,12 +10,16 @@ exports[`ModalComponent.tsx renders correctly 1`] = `
     >
       Test
     </h1>
-    <i
-      class="material-icons css-52vivv-ModalComponent"
-      data-testid="close-modal"
+    <button
+      class="css-hak93h"
     >
-      close
-    </i>
+      <i
+        class="material-icons"
+        data-testid="close-modal"
+      >
+        close
+      </i>
+    </button>
     <div
       class="css-8ezbff"
     >
@@ -25,13 +29,13 @@ exports[`ModalComponent.tsx renders correctly 1`] = `
       class="css-3to2p8"
     >
       <button
-        class="css-1kyceuw"
+        class="css-34a7o7"
         data-testid="cancel-modal"
       >
         Cancel
       </button>
       <button
-        class="css-1w5u29q"
+        class="css-hi8zu7"
         data-testid="continue-modal"
       >
         Continue

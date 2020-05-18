@@ -10,13 +10,13 @@ interface Props {
 }
 
 const loadedKeyframes = keyframes`
-  0% { max-height: 0%; }
+  0% { height: 0%; }
 `;
 
 const ContainerStyled = Styled.div`
   background: #444;
   width: 200px;
-  max-height: calc(100% - 50px);
+  height: calc(100% - 50px);
   animation: ${loadedKeyframes} 1.5s ease-out;
   overflow: hidden;
   opacity: 0.8;

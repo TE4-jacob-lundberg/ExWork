@@ -3,18 +3,18 @@
 exports[`LinkCollectionComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-7p5upc"
+    class="css-ubcm2u"
   >
     <div
       class="css-cfdpzz"
     >
       <i
-        class="material-icons css-hxc41y"
+        class="material-icons css-dyscyh"
       >
         remove_circle
       </i>
       <button
-        class="css-hz4xjw"
+        class="css-uxkr57"
       >
         link1
       </button>
@@ -23,12 +23,12 @@ exports[`LinkCollectionComponent.tsx renders correctly 1`] = `
       class="css-cfdpzz"
     >
       <i
-        class="material-icons css-hxc41y"
+        class="material-icons css-dyscyh"
       >
         remove_circle
       </i>
       <button
-        class="css-1o03l35"
+        class="css-1tzo580"
       >
         link2
       </button>

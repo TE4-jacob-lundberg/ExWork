@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Styled from '@emotion/styled';
 import { initDB, useIndexedDB } from 'react-indexed-db';
@@ -7,6 +7,7 @@ import { schema } from './shared/constants/DBSchema';
 import AppRouter from './AppRouter';
 import './App.css';
 import { standardGames } from './shared/constants/standardGames';
+import { EventBus } from './shared/helpers/EventBus';
 
 initDB(schema);
 
@@ -15,11 +16,8 @@ interface Props {}
 const App: React.FC<Props> = function () {
   const db = useIndexedDB('games');
 
-  useEffect(() => {
-    // Control game notification availability
-    localStorage.setItem('alreadyNotifiedOfRunningGame', '-1');
-
-    // Add standard games into db
+  // Add standard games into db
+  const addStandardGames = useCallback(() => {
     db.getAll().then(resp => {
       if (!resp.length) standardGames.forEach(game => {
         const noID = Object.assign(game);
@@ -28,6 +26,15 @@ const App: React.FC<Props> = function () {
       });
     });
   }, [db]);
+
+  useEffect(() => {
+    // Control game notification availability
+    localStorage.setItem('alreadyNotifiedOfRunningGame', '-1');
+
+    addStandardGames();
+
+    EventBus.subscribe('add-standard-games', addStandardGames);
+  }, [addStandardGames]);
 
   const AppContainerStyled = Styled.main`
     height: 100%;

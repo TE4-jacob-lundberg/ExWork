@@ -19,6 +19,7 @@ const AddGameView: React.FC<Props> = function () {
         onSubmit={(values): void => {
           db.add({
             ...values, 
+            links: [],
             image: {
               url: values.image, 
               bannerPos: { 
