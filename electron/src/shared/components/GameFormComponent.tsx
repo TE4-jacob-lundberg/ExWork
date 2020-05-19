@@ -10,7 +10,6 @@ import ModalComponent from '../components/ModalComponent';
 const ContainerStyled = Styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: #333;
   height: 100%;
   width: 100%;
   position: relative;
@@ -18,7 +17,9 @@ const ContainerStyled = Styled.div`
   
   & > form {
     height: 100%;
-    padding: 12px;
+    padding: 16px;
+    background: #333;
+    width: 100%;
   }
 `;
 
@@ -81,9 +82,8 @@ type ImageProps = {
 const ImageStyled = Styled.div<ImageProps>`
   width: 23.33vw;
   margin: auto;
-  height: 96%;
-  border: solid 1px #555;
-  background: url(${(props): string => props.image}) ${(props): string => `${props.x}% ${props.y}%`} no-repeat;
+  height: 100%;
+  background: url(${(props): string => `${props.image}) ${props.x}% ${props.y}%`} no-repeat;
   background-size: cover;
 `;
 
@@ -103,7 +103,8 @@ const ActionsContainer = Styled.div<ActionsContainerProps>`
   display: flex;
   flex-direction: ${(props): string => props.deletable ? 'row' : 'row-reverse'};
   justify-content: space-between;
-  width: 35vw;
+  width: calc(70vw / 2);
+  padding: 0 16px;
 
   & > button {
     margin: 0 4px;

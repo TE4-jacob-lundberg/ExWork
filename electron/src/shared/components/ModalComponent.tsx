@@ -12,7 +12,7 @@ const containerKeyframes = keyframes`
 
 interface Props {
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
   onClose: () => void;
   cancelAble?: boolean;
   cancelLabel?: string;
@@ -32,6 +32,7 @@ const ModalComponent: React.FC<Props> = function (props: Props) {
     background: #333;
     z-index: 999;
     top: calc(calc(70vh - ${props.children ? '500' : '200'}px)/2);
+    left: calc(calc(100% - 500px)/2);
     height: ${props.children ? '500' : '200'}px;
     width: 500px;
     padding-bottom: 8px;

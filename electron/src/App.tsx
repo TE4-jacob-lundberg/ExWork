@@ -7,34 +7,68 @@ import { schema } from './shared/constants/DBSchema';
 import AppRouter from './AppRouter';
 import './App.css';
 import { standardGames } from './shared/constants/standardGames';
+import { defaultKeybinds } from './shared/constants/defaultKeybinds';
 import { EventBus } from './shared/helpers/EventBus';
+import { electron } from './shared/helpers/BrowserElectron';
+import { IKeybind, IKeybinds } from './shared/helpers/Types';
 
 initDB(schema);
+
+const ipcRenderer = electron.ipcRenderer;
+
+function aTOh(arr: IKeybind[]): IKeybinds {
+  return arr.reduce<IKeybinds>((acc, item) => {
+    acc[item.name] = item;
+    return acc;
+  }, {});
+}
 
 interface Props {}
 
 const App: React.FC<Props> = function () {
-  const db = useIndexedDB('games');
+  const gameDB = useIndexedDB('games');
+  const keybindDB = useIndexedDB('keybinds');
 
   // Add standard games into db
   const addStandardGames = useCallback(() => {
-    db.getAll().then(resp => {
+    gameDB.getAll().then(resp => {
       if (!resp.length) standardGames.forEach(game => {
         const noID = Object.assign(game);
         delete noID.id;
-        db.add(noID).catch(err => console.error(err));
+        gameDB.add(noID).catch(err => console.error(err));
       });
     });
-  }, [db]);
+  }, [gameDB]);
+
+  // Add default/custom keybinds into db
+  const setKeyBinds = useCallback((): void => {
+    keybindDB.getAll().then((resp: IKeybind[]) => {
+      return new Promise((resolve) => {
+        if (!resp.length) defaultKeybinds.forEach(keybind => {
+          const noID = Object.assign(keybind);
+          delete noID.id;
+          keybindDB.add(noID).catch(err => console.error(err));
+        });
+        resolve();
+      });
+    }).then(() => {
+      keybindDB.getAll().then((resp: IKeybind[]) => ipcRenderer.invoke('keybinds-changed', aTOh(resp)));
+      EventBus.dispatch('new-keybinds-set');
+    }).catch((err: ErrorEvent) => console.error(err));
+  }, [keybindDB]);
 
   useEffect(() => {
     // Control game notification availability
     localStorage.setItem('alreadyNotifiedOfRunningGame', '-1');
 
+    // Add games on load
     addStandardGames();
-
     EventBus.subscribe('add-standard-games', addStandardGames);
-  }, [addStandardGames]);
+
+    // Add keybinds on load
+    setKeyBinds();
+    EventBus.subscribe('new-keybinds', setKeyBinds);
+  }, [addStandardGames, setKeyBinds]);
 
   const AppContainerStyled = Styled.main`
     height: 100%;

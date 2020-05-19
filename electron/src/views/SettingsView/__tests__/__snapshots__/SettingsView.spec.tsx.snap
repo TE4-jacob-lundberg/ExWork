@@ -3,26 +3,43 @@
 exports[`SettingsView.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-vnxadl"
+    class="css-j99gk8"
     data-testid="page-title"
   >
     <h1
-      class="css-g7rarf"
+      class="css-p1pfmz"
     >
       Settings
     </h1>
   </div>
   <div
-    class="css-nnf5p9"
+    class="css-olgc7d"
   >
     <div
-      class="css-fehiio"
+      class="css-1iagirt"
+    />
+    <div
+      class="css-4ng0sz"
     >
       <div
-        class="css-168old1"
+        class="css-jt7ygj"
       >
         <h1
-          class="css-k8am81"
+          class="css-1sx427h"
+        >
+          Reset keybinds to default
+        </h1>
+        <button
+          class="css-34a7o7"
+        >
+          RESET KEYBINDS
+        </button>
+      </div>
+      <div
+        class="css-jt7ygj"
+      >
+        <h1
+          class="css-1sx427h"
         >
           Reset your games to when first opened
         </h1>

@@ -26,4 +26,20 @@ describe('ButtonComponent.tsx', () => {
 
     expect(mockedClick).toHaveBeenCalledTimes(1);
   });
+
+  it('correctly shows an confirmation window', () => {
+    const mockedConfClick = jest.fn();
+    const { getByText } = factory(<ButtonComponent
+      onClick={mockedConfClick}
+      confirm
+    >
+      Click me
+    </ButtonComponent>);
+
+    fireEvent.click(getByText('Click me'));
+    expect(mockedConfClick).not.toHaveBeenCalled();
+
+    fireEvent.click(getByText('Continue'));
+    expect(mockedConfClick).toHaveBeenCalledTimes(1);
+  });
 });

@@ -9,7 +9,7 @@ const PageTitleComponent: React.FC<Props> = function (props: Props) {
 
   const ContainerStyled = Styled.div`
     position: absolute;
-    top: -46px;
+    top: -60px;
     width: 100%;
     text-align: center;
     display: flex;
@@ -18,8 +18,8 @@ const PageTitleComponent: React.FC<Props> = function (props: Props) {
   `;
     
   const TitleStyled = Styled.h1`
-    border-radius: 15px 15px 0 0;
-    padding: 4px 24px;
+    border-radius: 15px;
+    padding: 8px 24px;
     font-size: 32px;
     background: #333;
   `;

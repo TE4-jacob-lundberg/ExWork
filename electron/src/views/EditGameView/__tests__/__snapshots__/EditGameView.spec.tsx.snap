@@ -3,17 +3,17 @@
 exports[`EditGameView.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-vnxadl"
+    class="css-j99gk8"
     data-testid="page-title"
   >
     <h1
-      class="css-g7rarf"
+      class="css-p1pfmz"
     >
       Edit game
     </h1>
   </div>
   <div
-    class="css-o6jotw"
+    class="css-1oynk9y"
   >
     <form>
       <h1
@@ -107,7 +107,7 @@ exports[`EditGameView.tsx renders correctly 1`] = `
         />
       </section>
       <div
-        class="css-468wco"
+        class="css-14g5f4n"
       >
         <button
           class="css-34a7o7"
@@ -134,7 +134,7 @@ exports[`EditGameView.tsx renders correctly 1`] = `
       </div>
     </form>
     <div
-      class="css-npfm1w"
+      class="css-3hrhsn"
       x="0"
       y="0"
     />

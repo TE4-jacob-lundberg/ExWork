@@ -33,3 +33,10 @@ export interface IPosition {
   x: string;
   y: string;
 }
+
+export interface IKeybinds { [id: string]: IKeybind }
+
+export interface IKeybind { 
+  name: string;
+  key: string;
+}

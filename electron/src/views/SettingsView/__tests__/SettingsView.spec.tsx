@@ -4,6 +4,7 @@ import { fireEvent, waitForElement } from '@testing-library/react';
 import { factory } from '../../../shared/helpers/TestFactory';
 import SettingsView from '../SettingsView';
 import { EventBus } from '../../../shared/helpers/EventBus';
+import { IKeybind } from '../../../shared/helpers/Types';
 
 jest.mock('../../../shared/helpers/EventBus');
 
@@ -11,6 +12,9 @@ jest.mock('react-indexed-db', () => ({
   useIndexedDB: (): object => {
     return {
       clear: (): Promise<void> => Promise.resolve(),
+      getAll: (): Promise<IKeybind[]> => Promise.resolve([
+        { name: 'Test Keybind', key: 'F10'},
+      ]),
     };
   },
 }));

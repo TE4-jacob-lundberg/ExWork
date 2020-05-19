@@ -3,7 +3,7 @@
 exports[`GameFormComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-o6jotw"
+    class="css-1oynk9y"
   >
     <form>
       <h1
@@ -72,7 +72,7 @@ exports[`GameFormComponent.tsx renders correctly 1`] = `
         
       </section>
       <div
-        class="css-11r1swr"
+        class="css-1qnhe9y"
       >
         <button
           class="css-1ctwf7v"
@@ -89,7 +89,7 @@ exports[`GameFormComponent.tsx renders correctly 1`] = `
       </div>
     </form>
     <div
-      class="css-m2j5dl"
+      class="css-1nso4la"
       x="50"
       y="0"
     />

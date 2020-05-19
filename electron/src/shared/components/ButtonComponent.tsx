@@ -17,10 +17,10 @@ interface Props {
 }
 
 const ButtonComponent: React.FC<Props> = function (props: Props) {
-  const [showPrompt, setShowPrompt] = useState(false);
+  const [showConf, setShowConf] = useState(false);
 
   function handleClick(): void {
-    props.confirm ? setShowPrompt(true) : props.onClick();
+    props.confirm ? setShowConf(true) : props.onClick();
   }
 
   const ButtonStyled = Styled.button`
@@ -70,11 +70,12 @@ const ButtonComponent: React.FC<Props> = function (props: Props) {
       >
         {props.children}
       </ButtonStyled>
-      {showPrompt && <ModalComponent
+      {showConf && <ModalComponent
         title="Are you sure?"
-        onClose={(): void => setShowPrompt(false)}
-        onContinue={(): void => {props.onClick(); setShowPrompt(false); }}
+        onClose={(): void => setShowConf(false)}
+        onContinue={(): void => {props.onClick(); setShowConf(false); }}
         cancelAble
+        onCancel={(): void => setShowConf(false)}
       >
         
       </ModalComponent>}

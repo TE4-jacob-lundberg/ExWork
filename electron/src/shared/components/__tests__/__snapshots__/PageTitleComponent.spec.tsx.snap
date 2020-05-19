@@ -3,11 +3,11 @@
 exports[`PageTitleComponent.tsx renders correctly 1`] = `
 <div>
   <div
-    class="css-vnxadl"
+    class="css-j99gk8"
     data-testid="page-title"
   >
     <h1
-      class="css-g7rarf"
+      class="css-p1pfmz"
     >
       TestPageTitle
     </h1>

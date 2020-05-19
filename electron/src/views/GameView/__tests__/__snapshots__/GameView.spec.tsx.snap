@@ -6,11 +6,11 @@ exports[`GameView.tsx renders correctly 1`] = `
     class="css-1bxr3a5"
   >
     <div
-      class="css-vnxadl"
+      class="css-j99gk8"
       data-testid="page-title"
     >
       <h1
-        class="css-g7rarf"
+        class="css-p1pfmz"
       >
         testTitle
       </h1>

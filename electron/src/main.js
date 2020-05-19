@@ -61,8 +61,10 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-app.on('ready', () => {
-  globalShortcut.register('F10', () => {
+ipcMain.handle('keybinds-changed', (event, keys) => {
+  globalShortcut.unregisterAll();
+
+  globalShortcut.register(keys ? keys['Toggle Overlay'].key : 'F10', () => {
     windows = BrowserWindow.getAllWindows();
     if (mainWindow.isVisible()) windows.forEach(win => win.hide());
     else {
@@ -70,6 +72,7 @@ app.on('ready', () => {
       windows.forEach(win => win.show());
     }
   });
+
   globalShortcut.register('F12', () => {
     mainWindow.webContents.openDevTools()
   });

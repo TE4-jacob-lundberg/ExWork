@@ -13,5 +13,13 @@ export const schema = {
         { name: 'filenNames', keypath: 'fileNames', options: { unique: false }},
       ],
     },
+    {
+      store: 'keybinds',
+      storeConfig: { keyPath: 'id', autoIncrement: true },
+      storeSchema: [
+        { name: 'name', keypath: 'name', options: { unique: true }},
+        { name: 'key', keypath: 'key', options: { unique: true }},
+      ],
+    },
   ],
 };
